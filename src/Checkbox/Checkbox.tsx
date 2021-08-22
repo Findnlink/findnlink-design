@@ -6,6 +6,6 @@ import styles from './Checkbox.module.scss'
 
 export const Checkbox: React.FC<CheckboxProps> = ({ foo }) => (
   <div data-testid="Checkbox" className={styles.foo}>
-    {foo}Checkbox
+    {foo}Checkboxx
   </div>
 )
