@@ -1,0 +1,12 @@
+// Generated with util/create-component.js
+@import '../variables.scss';
+@import '../typography.scss';
+
+button {
+  color: rgba(var(--text), 1);
+  background-color: rgba(var(--bg2), 1);
+
+  &.primary {
+    background-color: rgba(var(--primary), 1);
+  }
+}

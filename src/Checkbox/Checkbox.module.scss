@@ -1,0 +1,9 @@
+// Generated with util/create-component.js
+@import "../variables.scss";
+@import "../typography.scss";
+
+.foo {
+  @include font-defaults;
+
+  color: $harvey-green;
+}
