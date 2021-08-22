@@ -1,0 +1,74 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: restore-cache
+    image: meltwater/drone-cache
+    pull: true
+    settings:
+      backend: 'filesystem'
+      restore: true
+      cache_key: 'volume'
+      archive_format: 'gzip'
+      mount:
+        - 'node_modules'
+    volumes:
+      - name: cache
+        path: /tmp/cache
+
+  - name: install dependencies
+    image: registry_pass
+    commands:
+      - yarn install --frozen-lockfile
+  - name: build prod image
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: registry_user
+      password:
+        from_secret: registry_pass
+      registry: index.findnlink.com
+      repo: index.findnlink.com/ui
+      dockerfile: Dockerfile
+      tags: prod
+    when:
+      branch:
+        - main
+      event:
+        - push
+  - name: build dev image
+    image: plugins/docker
+    settings:
+      username:
+        from_secret: registry_user
+      password:
+        from_secret: registry_pass
+      registry: index.findnlink.com
+      repo: index.findnlink.com/ui
+      dockerfile: Dockerfile
+      tags: dev
+    when:
+      branch:
+        - dev
+      event:
+        - push
+
+  - name: rebuild-cache
+    image: meltwater/drone-cache
+    pull: true
+    settings:
+      backend: 'filesystem'
+      rebuild: true
+      cache_key: 'volume'
+      archive_format: 'gzip'
+      mount:
+        - 'node_modules'
+    volumes:
+      - name: cache
+        path: /tmp/cache
+
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache
