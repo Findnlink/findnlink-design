@@ -9,8 +9,8 @@
   ],
   "types": "build/index.d.ts",
   "description": "Findnlink design system",
-  "repository": "https://github.com/Group-CEA/findnlink-design",
-  "author": "<emilhopf@gmail.com>",
+  "repository": "https://github.com/Findnlink/findnlink-design.git",
+  "author": "<contact@findnlink.com>",
   "license": "MIT",
   "homepage": "https://www.findnlink.com",
   "keywords": [
