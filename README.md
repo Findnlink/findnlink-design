@@ -1,6 +1,6 @@
 # Findnlink Design System
 
-Demo: [Storybook Website](https://storybook.findnlink.com)
+Demo: [Storybook Website](https://ui.findnlink.com)
 
 Use yarn generate -component-name- to create a new component.
 

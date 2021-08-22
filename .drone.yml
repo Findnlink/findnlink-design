@@ -17,10 +17,13 @@ steps:
       - name: cache
         path: /tmp/cache
 
-  - name: install dependencies
-    image: registry_pass
+  - name: install dependencies & build artifacts
+    image: node:12.22.5-alpine3.11
     commands:
-      - yarn install --frozen-lockfile
+      - apk add --no-cache --virtual .gyp python2 make g++
+        && yarn install --frozen-lockfile
+        && yarn run storybook:export
+        && apk del .gyp
   - name: build prod image
     image: plugins/docker
     settings:
