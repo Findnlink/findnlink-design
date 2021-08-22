@@ -9,7 +9,7 @@
   ],
   "types": "build/index.d.ts",
   "description": "Findnlink design system",
-  "repository": "https://github.com/jaemil/findnlink-design/settings",
+  "repository": "https://github.com/Group-CEA/findnlink-design",
   "author": "<emilhopf@gmail.com>",
   "license": "MIT",
   "homepage": "https://www.findnlink.com",
@@ -25,7 +25,8 @@
     "test:watch": "jest --watch",
     "storybook": "start-storybook -p 6006",
     "storybook:export": "build-storybook",
-    "generate": "node ./util/create-component"
+    "generate": "node ./util/create-component",
+    "release": "auto shipit"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
