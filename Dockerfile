@@ -1,11 +1,12 @@
 FROM node:16.7.0-alpine3.14 AS builder
 
-RUN apk add --no-cache --virtual .gyp python2 make g++ \
-    && yarn install --frozen-lockfile \
-    && apk del .gyp \
-
 WORKDIR /usr/src/app
 COPY . .
+
+RUN apk add --no-cache --virtual .gyp python2 make g++ \
+    && yarn install --frozen-lockfile \
+    && apk del .gyp
+
 ## RUN yarn install --frozen-lockfile
 RUN yarn run storybook:export
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meta, Story } from '@storybook/react'
 import { Button } from './Button'
-import { Props } from './Button.types'
+import { ButtonProps } from './Button.types'
 import { action } from '@storybook/addon-actions'
 
 const meta: Meta = {
@@ -15,7 +15,7 @@ const meta: Meta = {
 
 export default meta
 
-const Template: Story<Props> = (args) => <Button {...args} />
+const Template: Story<ButtonProps> = (args) => <Button {...args} />
 
 export const Default = Template.bind({})
 

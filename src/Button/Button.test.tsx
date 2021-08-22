@@ -2,10 +2,10 @@ import React from "react";
 import { render } from "@testing-library/react";
 
 import { Button } from "./Button";
-import { Props } from "./Button.types";
+import { ButtonProps } from "./Button.types";
 
 describe("Test Component", () => {
-  let props: Props;
+  let props: ButtonProps;
 
   beforeEach(() => {
 
