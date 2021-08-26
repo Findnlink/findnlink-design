@@ -2,7 +2,7 @@ lightstylesheet {
   background-color: black;
 }
 
-//Important: Do not remove lightstylesheet it is required in preview.js inside changeStyle()
+// Important: Do not remove lightstylesheet it is required in preview.js inside changeStyle()
 
 // Font
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
@@ -12,11 +12,31 @@ lightstylesheet {
 
 // Variables
 :root {
-  --fontSize: 18px;
+  --text100: #2a2a2a;
+  --text200: #585757;
+  --text300: #969696;
+  --text400: #d9d9d9;
+
+  // Background
+  --bg100: #ebebeb;
+  --bg200: #e5e5e5;
+  --bg300: #e1e1e1;
+
+  // Primary
+  --primary: #796aff;
+  --primary70: #796aff70;
+  --primary20: #796aff20;
+
+  // Shadow
+  --dropShadow: 0px 3px 5px 0px #00000010;
+  --innerShadow: inset 0px 3px 5px 0px #00000010;
+
+  // Font
+  --fontS: 12px;
+  --fontM: 14px;
+  --fontL: 16px;
+  --fontXL: 20px;
+
+  // Border
   --borderRadius: 10px;
-  --primary: 11, 16, 255;
-  --bg1: green;
-  --bg2: red;
-  --bg3: 60, 60, 60;
-  --text: black;
 }

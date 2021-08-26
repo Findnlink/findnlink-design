@@ -1,8 +1,9 @@
 button {
-  color: rgba(var(--text), 1);
-  background-color: rgba(var(--bg2), 1);
+  color: var(--text200);
+  background-color: var(--bg1);
 
   &.primary {
-    background-color: rgba(var(--primary), 1);
+    color: var(--primary);
+    background-color: var(--primary20);
   }
 }
