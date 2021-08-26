@@ -1,0 +1,22 @@
+lightStyleSheet {
+  background-color: black;
+}
+
+//Important: Do not remove lightStyleSheet it is required in preview.js changeStyle()
+
+// Font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+* {
+  font-family: Poppins, sans-serif;
+}
+
+// Variables
+:root {
+  --fontSize: 18px;
+  --borderRadius: 10px;
+  --primary: 11, 16, 255;
+  --bg1: green;
+  --bg2: red;
+  --bg3: 60, 60, 60;
+  --text: black;
+}
