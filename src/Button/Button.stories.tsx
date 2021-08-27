@@ -17,12 +17,24 @@ export default meta
 
 const Template: Story<ButtonProps> = (args) => <Button {...args} />
 
+Template.parameters = {
+  jest: ['Button.test.tsx'],
+}
+
 export const Default = Template.bind({})
 
 export const Primary = Template.bind({})
+
+export const Disabled = Template.bind({})
 
 Primary.args = {
   children: 'Primary',
   primary: true,
   onClick: action('primary click'),
+}
+
+Disabled.args = {
+  children: 'Disabled',
+  disabled: true,
+  onClick: action('disabled click'),
 }

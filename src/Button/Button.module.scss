@@ -1,9 +1,69 @@
+// button {
+//   transition: all 0.2s ease-in-out;
+//   color: var(--text200);
+//   background-color: var(--bg200);
+//   font-size: var(--fontM);
+//   border-radius: var(--borderRadius);
+//   padding: 5px 10px;
+//   box-shadow: var(--dropShadow);
+//   cursor: pointer;
+//   border: var(--border) var(--text400);
+//   font-weight: var(--weightNormal);
+
+//   &:hover {
+//     border: var(--border) var(--bg100);
+//     box-shadow: none;
+//   }
+
+//   &:active {
+//     transition: all 0s ease-in-out;
+//     box-shadow: var(--innerShadow);
+//   }
+
+//   &.primary {
+//     color: var(--primary);
+//     background-color: var(--primary20);
+//     border-color: var(--primary);
+//     &:hover {
+//     }
+//   }
+
+//   &:disabled {
+//     opacity: 0.5;
+//     cursor: not-allowed;
+//   }
+// }
+
 button {
+  transition: all 0.2s ease-in-out;
   color: var(--text200);
-  background-color: var(--bg1);
+  background-color: var(--bg200);
+  font-size: var(--fontM);
+  border-radius: var(--borderRadius);
+  padding: 5px 12px;
+  box-shadow: var(--dropShadow);
+  cursor: pointer;
+  border: var(--border) var(--text400);
+  font-weight: var(--weightNormal);
 
   &.primary {
     color: var(--primary);
     background-color: var(--primary20);
+    border-color: var(--primary);
+  }
+
+  &:hover {
+    background-color: var(--bg300);
+    border: var(--border) var(--text400);
+  }
+
+  &:active {
+    transition: all 0s ease-in-out;
+    box-shadow: var(--innerShadow);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 }

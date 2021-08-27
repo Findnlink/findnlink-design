@@ -5,4 +5,6 @@ export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode
   /** Change the variant */
   primary?: boolean
+  /** Disable the button */
+  disabled?: boolean
 }

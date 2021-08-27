@@ -1,24 +1,23 @@
-import React from "react";
-import { render } from "@testing-library/react";
+import React from 'react'
+import { render, screen } from '@testing-library/react'
+import { ButtonProps } from './Button.types'
+import { Default, Primary, Disabled } from './Button.stories'
 
-import { Button } from "./Button";
-import { ButtonProps } from "./Button.types";
+describe('Test Component', () => {
+  let props: ButtonProps
 
-describe("Test Component", () => {
-  let props: ButtonProps;
+  beforeEach(() => {})
+  const onClickSpy = jest.fn()
 
-  beforeEach(() => {
+  const renderComponent = () => render(<Default onClick={onClickSpy}>Default</Default>)
 
-  });
+  it('should render Default text correctly', () => {
+    const { getByTestId } = renderComponent()
 
-  const renderComponent = () => render(<Button {...props} />);
+    const component = screen.getByRole('button')
+    component.click()
 
-  it("should render foo text correctly", () => {
-
-    const { getByTestId } = renderComponent();
-
-    const component = getByTestId("Button");
-
-    expect(component).toHaveTextContent("harvey was here");
-  });
-});
+    expect(component).toHaveTextContent('Default')
+    expect(onClickSpy).toHaveBeenCalled()
+  })
+})

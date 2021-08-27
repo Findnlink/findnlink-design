@@ -5,7 +5,7 @@ darkstylesheet {
 // Important: Do not remove darkstylesheet it is required in preview.js inside changeStyle()
 
 // Font
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
 * {
   font-family: Poppins, sans-serif;
 }
@@ -38,6 +38,11 @@ darkstylesheet {
   --fontL: 16px;
   --fontXL: 20px;
 
+  --weightLight: 300;
+  --weightNormal: 600;
+  --weightBold: 700;
+
   // Border
   --borderRadius: 10px;
+  --border: 2px solid;
 }

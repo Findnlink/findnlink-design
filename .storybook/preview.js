@@ -3,6 +3,9 @@ import addons from '@storybook/addons'
 import './reset.scss'
 import './dark.scss'
 import './light.scss'
+import { addDecorator } from '@storybook/react' // <- or your view layer
+import { withTests } from '@storybook/addon-jest'
+import results from '../.jest-test-results.json'
 
 export const parameters = {
   darkMode: {
@@ -16,6 +19,9 @@ export const parameters = {
       appBg: '#141414',
       appContentBg: '#1E1E1E',
       barBg: '#1E1E1E',
+      docs: {
+        theme: themes.dark,
+      },
     },
     // Override the default light theme
     light: {
@@ -26,6 +32,9 @@ export const parameters = {
       appBg: '#E1E1E1',
       appContentBg: '#EBEBEB',
       barBg: '#EBEBEB',
+      docs: {
+        theme: themes.normal,
+      },
     },
   },
 }
@@ -55,3 +64,9 @@ channel.on('DARK_MODE', (isDark) => {
     changeStyle(isDark)
   }
 })
+
+addDecorator(
+  withTests({
+    results,
+  }),
+)

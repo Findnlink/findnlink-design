@@ -5,7 +5,7 @@ lightstylesheet {
 // Important: Do not remove lightstylesheet it is required in preview.js inside changeStyle()
 
 // Font
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap');
 * {
   font-family: Poppins, sans-serif;
 }
@@ -18,9 +18,9 @@ lightstylesheet {
   --text400: #d9d9d9;
 
   // Background
-  --bg100: #ebebeb;
+  --bg100: #e1e1e1;
   --bg200: #e5e5e5;
-  --bg300: #e1e1e1;
+  --bg300: #ebebeb;
 
   // Primary
   --primary: #796aff;
@@ -37,6 +37,11 @@ lightstylesheet {
   --fontL: 16px;
   --fontXL: 20px;
 
+  --weightLight: 300;
+  --weightNormal: 600;
+  --weightBold: 700;
+
   // Border
   --borderRadius: 10px;
+  --border: 2px solid;
 }

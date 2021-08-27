@@ -1,14 +1,12 @@
-import React, { HTMLAttributes, ReactNode } from 'react'
+import React from 'react'
 import styles from './Button.module.scss'
 import { ButtonProps } from './Button.types'
 
 /** This is a special button */
 export const Button = ({ children, primary, ...props }: ButtonProps) => {
   return (
-    <div className="light">
-      <button className={primary ? styles.primary : styles.button} {...props}>
-        {children}
-      </button>
-    </div>
+    <button className={primary ? styles.primary : styles.button} {...props}>
+      {children}
+    </button>
   )
 }
