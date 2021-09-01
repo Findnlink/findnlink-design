@@ -1,23 +1,33 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import { shallow } from 'enzyme'
 import { ButtonProps } from './Button.types'
-import { Default, Primary, Disabled } from './Button.stories'
+import { Button } from './Button'
 
-describe('Test Component', () => {
-  let props: ButtonProps
-
-  beforeEach(() => {})
+describe('Button Component', () => {
   const onClickSpy = jest.fn()
 
-  const renderComponent = () => render(<Default onClick={onClickSpy}>Default</Default>)
+  const renderComponent = ({ children, primary, disabled }: Partial<ButtonProps>) =>
+    render(
+      <Button primary={primary} disabled={disabled} onClick={onClickSpy}>
+        {children}
+      </Button>,
+    )
 
   it('should render Default text correctly', () => {
-    const { getByTestId } = renderComponent()
+    const children = 'Default'
 
-    const component = screen.getByRole('button')
-    component.click()
+    const { getByTestId } = renderComponent({ children })
 
-    expect(component).toHaveTextContent('Default')
-    expect(onClickSpy).toHaveBeenCalled()
+    const button = getByTestId('button')
+
+    expect(button).toHaveTextContent(children)
+  })
+
+  it('should handle onClick event correctly', () => {
+    const button = shallow(<Button onClick={onClickSpy}>Default</Button>)
+
+    button.find('button').at(0).simulate('click')
+    expect(onClickSpy.mock.calls.length).toEqual(1)
   })
 })

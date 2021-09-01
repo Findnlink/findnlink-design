@@ -1,0 +1,38 @@
+div {
+  display: flex;
+  align-items: center;
+  input {
+    transition: all 0.2s ease-in-out;
+    color: var(--text200);
+    background-color: var(--bg200);
+    font-size: var(--fontL);
+    border-radius: var(--borderRadius);
+    padding: 6px 12px;
+    //box-shadow: var(--dropShadow);
+    cursor: text;
+    border: var(--border) var(--text400);
+    font-weight: var(--weightNormal);
+
+    &::placeholder {
+      color: var(--text300);
+    }
+
+    &#error {
+      border: var(--border) var(--error);
+    }
+
+    &.icon {
+      padding-left: 30px;
+    }
+
+    &[type='password'] {
+      padding-right: 30px;
+    }
+  }
+
+  .icon {
+  }
+
+  .password {
+  }
+}

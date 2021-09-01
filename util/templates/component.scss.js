@@ -1,11 +1,7 @@
 module.exports = (componentName) => ({
-  content: `@import "../variables.scss";
-@import "../typography.scss";
-
+  content: `
 .foo {
-  @include font-defaults;
-
-  color: $harvey-green;
+  color: blue;
 }
 `,
   extension: `.module.scss`,
