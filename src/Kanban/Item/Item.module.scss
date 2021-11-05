@@ -1,4 +1,17 @@
+.item {
+  font-size: var(--fontM);
+  color: var(--text200);
+  background-color: var(--bg200);
+  width: calc(100% - 2 * 10px - 2 * 2px); //100% - padding and border
+  padding: 10px;
+  border-radius: calc(var(--borderRadius) / 2);
+  border: 2px solid transparent;
+  margin: 3px 0px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
 
-.foo {
-  color: blue;
+  &:hover {
+    border: 2px solid var(--text400);
+  }
 }

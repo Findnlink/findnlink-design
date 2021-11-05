@@ -24,7 +24,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:generate-output": "jest --json --outputFile=.jest-test-results.json",
-    "storybook": "yarn test:generate-output && start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006",
     "storybook:export": "build-storybook",
     "generate": "node ./util/create-component",
     "release": "auto shipit",
@@ -74,8 +74,10 @@
   },
   "dependencies": {
     "@storybook/addons": "^6.3.12",
+    "@types/react-beautiful-dnd": "^13.1.2",
     "colors": "^1.4.0",
     "react-beautiful-dnd": "^13.1.0",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "react-loading-skeleton": "^3.0.1"
   }
 }

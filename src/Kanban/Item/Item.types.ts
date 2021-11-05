@@ -1,3 +1,4 @@
-export interface ItemProps {
-    foo: string;
+export default interface ItemProps {
+  value: string
+  id: string
 }

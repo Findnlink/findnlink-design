@@ -1,4 +1,4 @@
 export interface AddProps {
-    text: string;
-    color: string;
+  text: string
+  color: string
 }

@@ -1,9 +1,8 @@
-import React from "react";
-import { Icon } from "./Icon";
+import React from 'react'
+import Icon from './Icon'
 
 export default {
-    title: "Icon"
-};
+  title: 'Icon',
+}
 
-export const WithBar = () => <Icon icon="add" />;
-
+export const Add = () => <Icon icon="add" color="var(--text200)" />

@@ -1,3 +1,6 @@
+import Item from '../Item/Item.types'
+
 export interface CardProps {
-    foo: string;
+  color: string
+  items: Item[]
 }

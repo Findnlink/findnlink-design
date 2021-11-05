@@ -1,20 +1,17 @@
-import React from "react";
-import { HeaderProps } from "./Header.types";
-import styles from "./Header.module.scss";
+import React from 'react'
+import { HeaderProps } from './Header.types'
+import styles from './Header.module.scss'
+import Icon from '../../Icon/Icon'
 
 const Header = ({ text, color, itemCount }: HeaderProps) => {
   return (
-    <div data-testid={'Header'} className={styles.header} style={{color: color}}>
-      <div>
-        {itemCount}
+    <div data-testid={'Header'} className={styles.header} style={{ color: color }}>
+      <div className={styles.text}>
+        <span className={styles.itemCount}>{itemCount}</span>
+        <span>{text}</span>
       </div>
-      <div>
-        {text}
-      </div>
-      <div>
-        <p>.</p>
-        <p>.</p>
-        <p>.</p>
+      <div className={styles.icon} onClick={() => console.log('Clicked')}>
+        <Icon icon="itemMenu" />
       </div>
     </div>
   )

@@ -1,3 +1,31 @@
 .header {
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg200);
+  font-size: var(--fontM);
+  padding: 10px;
+  margin: 3px 0px;
+  width: calc(100% - 2 * 10px - 2 * 2px); //100% minus padding and border
+  border: 2px solid transparent;
+  border-radius: calc(var(--borderRadius) / 2);
+
+  .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .itemCount {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px;
+      border-radius: 5px;
+      background-color: var(--bg100);
+      margin-right: 5px;
+    }
+  }
+  .right {
+    cursor: pointer;
+    width: 5px;
+  }
 }
