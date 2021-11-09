@@ -5,7 +5,8 @@ import Board from './Board'
 import { BoardProps } from './Board.types'
 
 describe('Board Component', () => {
-  const renderComponent = () => render(<Board foo={'foo'} />)
+  //@ts-ignore
+  const renderComponent = () => render(<Board title={'foo'} />)
 
   it('', () => {})
 })

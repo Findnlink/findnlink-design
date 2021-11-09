@@ -12,7 +12,7 @@
         "boardId": "6189805d0662a50e805d06e24",
         "items": [
           {
-            "text": "Item 1",
+            "text": "Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1Item 1",
             "position": 0,
             "_id": "61847475feea9e5aac6f8efc5",
             "columnId": "6181957b59b74edd8fb95d256",
@@ -61,7 +61,7 @@
       {
         "title": "In Progress",
         "color": "#796AFF",
-        "position": 1,
+        "position": 2,
         "_id": "6189805d0662a50e805d06e77",
         "boardId": "6189805d0662a50e805d06e38",
         "items": [
@@ -96,7 +96,7 @@
       {
         "title": "Done",
         "color": "#17BF63",
-        "position": 2,
+        "position": 3,
         "_id": "6189805d0662a50e805d06e815",
         "boardId": "6189805d0662a50e805d06e416",
         "items": [

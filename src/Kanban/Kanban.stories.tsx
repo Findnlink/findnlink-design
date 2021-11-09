@@ -4,7 +4,7 @@ import Board from './Board/Board'
 import Card from './Column/Column'
 import Header from './Header/Header'
 import Item from './Item/Item'
-import data from '../../data.json'
+import _data from '../../data.json'
 
 export default {
   title: 'Kanban',
@@ -23,14 +23,19 @@ export default {
 // export const item = () => <Item value={'foo'} id={'0'} />
 // export const header = () => <Header text="In Progress" color="var(--primary)" itemCount={3} />
 // export const add = () => <Add text="Add new" color="var(--text200)" />
-export const board = () => (
-  <Board
-    _id={data[0]._id}
-    columns={data[0].columns}
-    title={data[0].title}
-    projectId={data[0].projectId}
-    createdAt={data[0].createdAt}
-    updatedAt={data[0].updatedAt}
-    i18n={{ addNew: 'Add new' }}
-  />
-)
+export const board = () => {
+  const [data, setData] = useState(_data[0])
+
+  return (
+    <Board
+      _id={data._id}
+      columns={data.columns}
+      setColumns={setData}
+      title={data.title}
+      projectId={data.projectId}
+      createdAt={data.createdAt}
+      updatedAt={data.updatedAt}
+      i18n={{ addNew: 'Add new' }}
+    />
+  )
+}

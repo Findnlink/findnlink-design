@@ -3,6 +3,10 @@ export default interface ItemProps {
   position: number
   _id: string
   columnId: string
-  createdAt: string
-  updatedAt: string
+  createdAt?: string
+  updatedAt?: string
+  isDragging?: boolean
+  columnIndex?: number
+  itemIndex?: number
+  deleteItem?: (columnIndex: number, itemIndex: number) => void
 }

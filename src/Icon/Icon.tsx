@@ -21,8 +21,8 @@ const Icon = ({ icon, color }: IconProps) => {
                 transform="translate(0 3.211)"
                 fill="none"
                 stroke={color}
-                stroke-linecap="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeWidth="2"
               />
               <line
                 id="Line_846"
@@ -31,8 +31,8 @@ const Icon = ({ icon, color }: IconProps) => {
                 transform="translate(3.211) rotate(90)"
                 fill="none"
                 stroke={color}
-                stroke-linecap="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeWidth="2"
               />
             </g>
           </svg>

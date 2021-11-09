@@ -19,6 +19,9 @@ const Column = ({
   updatedAt,
   dragHandleProps,
   i18n,
+  index,
+  addItem,
+  deleteItem,
 }: ColumnProps) => {
   return (
     <div data-testid={'Column'} className={styles.column}>
@@ -30,12 +33,12 @@ const Column = ({
             itemCount={items.length}
             color={color}
           />
-          <Droppable droppableId={_id} key={_id} type="COLUMN">
+          <Droppable droppableId={String(index)} key={_id} type="COLUMN">
             {(provided: any) => (
               <div style={{ width: '100%' }} ref={provided.innerRef} {...provided.droppableProps}>
-                {items.map((item: ItemProps, index: number) => (
-                  <Draggable draggableId={item._id} key={item._id} index={index}>
-                    {(provided: any) => (
+                {items.map((item: ItemProps, itemIndex: number) => (
+                  <Draggable draggableId={item._id} key={item._id} index={itemIndex}>
+                    {(provided: any, snapshot: any) => (
                       <div
                         ref={provided.innerRef}
                         {...provided.draggableProps}
@@ -48,6 +51,10 @@ const Column = ({
                           columnId={item.columnId}
                           createdAt={item.createdAt}
                           updatedAt={item.updatedAt}
+                          isDragging={snapshot.isDragging}
+                          deleteItem={deleteItem}
+                          itemIndex={itemIndex}
+                          columnIndex={index}
                         />
                         {provided.placeholder}
                       </div>
@@ -62,13 +69,7 @@ const Column = ({
           <Add
             text={i18n?.addNew || 'Add new'}
             color={color}
-            onClick={() => {
-              console.log('added')
-              // setItems((prev: any) => [
-              //   ...prev,
-              //   { value: 'item' + Math.random(), id: Math.random() },
-              // ])
-            }}
+            onClick={() => addItem!(index!, _id!)}
           />
         </>
       ) : (
@@ -80,16 +81,5 @@ const Column = ({
     </div>
   )
 }
-
-// <DragDropContext onDragEnd={onDragEnd}>
-//             <Droppable droppableId="list">
-//               {(provided: any) => (
-//                 <div ref={provided.innerRef} {...provided.droppableProps}>
-//                   <QuoteList quotes={state.quotes} />
-//                   {provided.placeholder}
-//                 </div>
-//               )}
-//             </Droppable>
-//           </DragDropContext>
 
 export default Column
