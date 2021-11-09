@@ -3,9 +3,14 @@ import { HeaderProps } from './Header.types'
 import styles from './Header.module.scss'
 import Icon from '../../Icon/Icon'
 
-const Header = ({ text, color, itemCount }: HeaderProps) => {
+const Header = ({ text, color, itemCount, dragHandleProps }: HeaderProps) => {
   return (
-    <div data-testid={'Header'} className={styles.header} style={{ color: color }}>
+    <div
+      {...dragHandleProps}
+      data-testid={'Header'}
+      className={styles.header}
+      style={{ color: color }}
+    >
       <div className={styles.text}>
         <span className={styles.itemCount}>{itemCount}</span>
         <span>{text}</span>

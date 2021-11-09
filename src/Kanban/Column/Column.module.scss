@@ -1,10 +1,11 @@
-.card {
+.column {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 300px;
   min-width: 100px;
   max-width: 300px;
+  margin: 5px;
 }
 
 .skeleton {

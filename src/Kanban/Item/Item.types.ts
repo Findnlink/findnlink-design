@@ -1,4 +1,8 @@
 export default interface ItemProps {
-  value: string
-  id: string
+  text: string
+  position: number
+  _id: string
+  columnId: string
+  createdAt: string
+  updatedAt: string
 }

@@ -1,0 +1,128 @@
+[
+  {
+    "_id": "6189805d0662a50e805d06e51",
+    "title": "Board Title",
+    "projectId": "618195cb667c2ae7ca1e16643",
+    "columns": [
+      {
+        "title": "Todo",
+        "color": "var(--text200)",
+        "position": 0,
+        "_id": "6189805d0662a50e805d06e62",
+        "boardId": "6189805d0662a50e805d06e24",
+        "items": [
+          {
+            "text": "Item 1",
+            "position": 0,
+            "_id": "61847475feea9e5aac6f8efc5",
+            "columnId": "6181957b59b74edd8fb95d256",
+            "createdAt": "2021-11-08T19:54:05.764Z",
+            "updatedAt": "2021-11-08T19:54:05.764Z"
+          }
+        ],
+        "createdAt": "2021-11-08T19:54:05.764Z",
+        "updatedAt": "2021-11-08T19:54:05.764Z"
+      },
+      {
+        "title": "Bugs",
+        "color": "#FF6A6A",
+        "position": 1,
+        "_id": "6189805d0662a50e805d06e771",
+        "boardId": "6189805d0662a50e805d06e381",
+        "items": [
+          {
+            "text": "Item 1",
+            "position": 0,
+            "_id": "61847475feea9e5aac6f8efc91",
+            "columnId": "6181957b59b74edd8fb95d25101",
+            "createdAt": "2021-11-08T19:54:05.764Z",
+            "updatedAt": "2021-11-08T19:54:05.764Z"
+          },
+          {
+            "text": "Item 2",
+            "position": 1,
+            "_id": "61847475feea9e5aac6f8efc111",
+            "columnId": "6181957b59b74edd8fb95d25121",
+            "createdAt": "2021-11-08T19:54:05.764Z",
+            "updatedAt": "2021-11-08T19:54:05.764Z"
+          },
+          {
+            "text": "Item 3",
+            "position": 2,
+            "_id": "61847475feea9e5aac6f8efc131",
+            "columnId": "6181957b59b74edd8fb95d25141",
+            "createdAt": "2021-11-08T19:54:05.764Z",
+            "updatedAt": "2021-11-08T19:54:05.764Z"
+          }
+        ],
+        "createdAt": "2021-11-08T19:54:05.765Z",
+        "updatedAt": "2021-11-08T19:54:05.765Z"
+      },
+      {
+        "title": "In Progress",
+        "color": "#796AFF",
+        "position": 1,
+        "_id": "6189805d0662a50e805d06e77",
+        "boardId": "6189805d0662a50e805d06e38",
+        "items": [
+          {
+            "text": "Item 1",
+            "position": 0,
+            "_id": "61847475feea9e5aac6f8efc9",
+            "columnId": "6181957b59b74edd8fb95d2510",
+            "createdAt": "2021-11-08T19:54:05.764Z",
+            "updatedAt": "2021-11-08T19:54:05.764Z"
+          },
+          {
+            "text": "Item 2",
+            "position": 1,
+            "_id": "61847475feea9e5aac6f8efc11",
+            "columnId": "6181957b59b74edd8fb95d2512",
+            "createdAt": "2021-11-08T19:54:05.764Z",
+            "updatedAt": "2021-11-08T19:54:05.764Z"
+          },
+          {
+            "text": "Item 3",
+            "position": 2,
+            "_id": "61847475feea9e5aac6f8efc13",
+            "columnId": "6181957b59b74edd8fb95d2514",
+            "createdAt": "2021-11-08T19:54:05.764Z",
+            "updatedAt": "2021-11-08T19:54:05.764Z"
+          }
+        ],
+        "createdAt": "2021-11-08T19:54:05.765Z",
+        "updatedAt": "2021-11-08T19:54:05.765Z"
+      },
+      {
+        "title": "Done",
+        "color": "#17BF63",
+        "position": 2,
+        "_id": "6189805d0662a50e805d06e815",
+        "boardId": "6189805d0662a50e805d06e416",
+        "items": [
+          {
+            "text": "Item 1",
+            "position": 0,
+            "_id": "61847475feea9e5aac6f8efc18",
+            "columnId": "6181957b59b74edd8fb95d2517",
+            "createdAt": "2021-11-08T19:54:05.764Z",
+            "updatedAt": "2021-11-08T19:54:05.764Z"
+          },
+          {
+            "text": "Item 2",
+            "position": 1,
+            "_id": "61847475feea9e5aac6f8efc19",
+            "columnId": "6181957b59b74edd8fb95d2520",
+            "createdAt": "2021-11-08T19:54:05.764Z",
+            "updatedAt": "2021-11-08T19:54:05.764Z"
+          }
+        ],
+        "createdAt": "2021-11-08T19:54:05.765Z",
+        "updatedAt": "2021-11-08T19:54:05.765Z"
+      }
+    ],
+    "createdAt": "2021-11-08T19:54:05.766Z",
+    "updatedAt": "2021-11-08T19:54:05.766Z",
+    "__v": 0
+  }
+]

@@ -9,6 +9,7 @@
   width: calc(100% - 2 * 10px - 2 * 2px); //100% minus padding and border
   border: 2px solid transparent;
   border-radius: calc(var(--borderRadius) / 2);
+  font-weight: bold;
 
   .text {
     display: flex;
