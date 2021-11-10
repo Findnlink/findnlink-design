@@ -29,6 +29,7 @@
     "generate": "node ./util/create-component",
     "release": "auto latest",
     "labels": "auto create-labels",
+    "init": "auto init",
     "prepare": "husky install"
   },
   "peerDependencies": {
