@@ -28,6 +28,7 @@
     "storybook:export": "build-storybook",
     "generate": "node ./util/create-component",
     "release": "auto shipit",
+    "labels": "auto create-labels",
     "prepare": "husky install"
   },
   "peerDependencies": {
