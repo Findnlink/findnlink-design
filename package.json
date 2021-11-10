@@ -27,7 +27,7 @@
     "storybook": "start-storybook -p 6006",
     "storybook:export": "build-storybook",
     "generate": "node ./util/create-component",
-    "release": "auto shipit",
+    "release": "auto latest",
     "labels": "auto create-labels",
     "prepare": "husky install"
   },
