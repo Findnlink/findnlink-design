@@ -78,17 +78,9 @@ const Board = ({
     return result
   }
 
-  const deleteItem = (columnIndex: number, itemIndex: number) => {
-    console.log('columnIndex', columnIndex, 'itemIndex', itemIndex)
-    columns[columnIndex].items.splice(itemIndex, 1)
-    setColumns({ columns: columns })
-  }
-
-  const deleteColumn = () => {}
-
   const addItem = (columnIndex: number, columnId: string) => {
     columns[columnIndex].items.push({
-      text: '',
+      text: 'a',
       position: columns[columnIndex].items.length,
       columnId: columnId,
       _id: Math.random().toString(36).substr(2, 9),
@@ -96,7 +88,21 @@ const Board = ({
     setColumns({ columns: columns })
   }
 
+  const deleteItem = (columnIndex: number, itemIndex: number) => {
+    console.log('columnIndex', columnIndex, 'itemIndex', itemIndex)
+    columns[columnIndex].items.splice(itemIndex, 1)
+    setColumns({ columns: columns })
+  }
+
+  const editItem = (columnIndex: number, itemIndex: number) => {
+    console.log('columnIndex', columnIndex, 'itemIndex', itemIndex)
+    columns[columnIndex].items.splice(itemIndex, 1)
+    setColumns({ columns: columns })
+  }
+
   const addColumn = () => {}
+  const deleteColumn = () => {}
+  const editColumn = () => {}
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
