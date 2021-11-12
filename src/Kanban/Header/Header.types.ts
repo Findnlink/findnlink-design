@@ -3,4 +3,6 @@ export interface HeaderProps {
   itemCount: number
   color: string
   dragHandleProps: any
+  deleteColumn: (columnIndex: number) => void
+  columnIndex: number
 }

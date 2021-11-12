@@ -11,6 +11,19 @@
   border-radius: calc(var(--borderRadius) / 2);
   font-weight: bold;
 
+  .icon {
+    display: none;
+    padding: 5px 10px;
+    margin: -5px;
+    cursor: pointer;
+    border-radius: calc(var(--borderRadius) / 2);
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      background-color: var(--bg300);
+    }
+  }
+
   .text {
     display: flex;
     align-items: center;
@@ -28,5 +41,27 @@
   .right {
     cursor: pointer;
     width: 5px;
+  }
+
+  &:hover {
+    border: 2px solid var(--text400);
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header {
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 15px;
+    }
   }
 }

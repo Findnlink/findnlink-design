@@ -1,33 +1,40 @@
-import React, { useState } from 'react'
-import { Input } from './Input'
-import { Meta, Story } from '@storybook/react'
-import { InputProps } from './Input.types'
-import { action } from '@storybook/addon-actions'
+import React, { useState } from "react";
+import { Input } from "./Input";
+import { Meta, Story } from "@storybook/react";
+import { InputProps } from "./Input.types";
+import { action } from "@storybook/addon-actions";
 
 const meta: Meta = {
-  title: 'Input',
+  title: "Input",
   component: Input,
   argTypes: {
-    onClick: { action: 'clicked' },
+    onClick: { action: "clicked" },
   },
-}
+};
 
-export default meta
+export default meta;
 
 const Template: Story<InputProps> = (args) => {
-  const [data, setData] = useState('')
-  function handleChange(event) {
-    const { value } = event.target
-    setData(() => value)
+  const [data, setData] = useState("");
+  function handleChange(event: any) {
+    const { value } = event.target;
+    setData(() => value);
   }
-  return <Input {...args} value={data} onChange={handleChange} placeholder="Default" />
-}
+  return (
+    <Input
+      {...args}
+      value={data}
+      onChange={handleChange}
+      placeholder="Default"
+    />
+  );
+};
 
 Template.parameters = {
-  jest: ['Button.test.tsx'],
-}
+  jest: ["Button.test.tsx"],
+};
 
-export const Default = Template.bind({})
+export const Default = Template.bind({});
 
 // export const Error = () => {
 //   const [data, setData] = useState('')

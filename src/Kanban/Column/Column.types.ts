@@ -5,7 +5,6 @@ export default interface ColumnProps {
   color: string
   position: number
   _id: string
-  boardId: string
   items: Item[]
   createdAt?: string
   updatedAt?: string
@@ -14,4 +13,7 @@ export default interface ColumnProps {
   index?: number
   addItem?: (columnIndex: number, columnId: string) => void
   deleteItem?: (columnIndex: number, itemIndex: number) => void
+  editItem?: (columnIndex: number, itemIndex: number, text: string) => void
+  deleteColumn?: (columnIndex: number) => void
+  editColumn?: (columnIndex: number, columnId: string) => void
 }

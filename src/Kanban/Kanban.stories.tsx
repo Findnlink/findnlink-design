@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Add from './Add/Add'
-import Board from './Board/Board'
+import { Board } from './Board/Board'
 import Card from './Column/Column'
 import Header from './Header/Header'
 import Item from './Item/Item'

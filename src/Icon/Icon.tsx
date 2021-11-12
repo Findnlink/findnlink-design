@@ -1,8 +1,9 @@
 import React from 'react'
 import { IconProps } from './Icon.types'
+//@ts-ignore
 import styles from './Icon.module.scss'
 
-const Icon = ({ icon, color }: IconProps) => {
+export const Icon = ({ icon, color }: IconProps) => {
   const returnSVG = () => {
     switch (icon) {
       case 'add':
@@ -76,6 +77,68 @@ const Icon = ({ icon, color }: IconProps) => {
             />
           </svg>
         )
+      case 'arrow':
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="8.523"
+            height="11.831"
+            viewBox="0 0 8.523 11.831"
+          >
+            <line
+              id="Line_867"
+              data-name="Line 867"
+              x2="3.798"
+              y2="4.288"
+              transform="translate(2.117 9.714) rotate(-90)"
+              fill="none"
+              stroke="#a7a8a8"
+              strokeLinecap="round"
+              strokeWidth="3"
+            />
+            <line
+              id="Line_868"
+              data-name="Line 868"
+              x1="3.798"
+              y2="4.288"
+              transform="translate(2.117 5.916) rotate(-90)"
+              fill="none"
+              stroke="#a7a8a8"
+              strokeLinecap="round"
+              strokeWidth="3"
+            />
+          </svg>
+        )
+      case 'cross':
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="11.839"
+            height="11.839"
+            viewBox="0 0 11.839 11.839"
+          >
+            <line
+              id="Line_869"
+              data-name="Line 869"
+              y2="10.742"
+              transform="translate(9.717 2.122) rotate(45)"
+              fill="none"
+              stroke="var(--text300)"
+              strokeLinecap="round"
+              strokeWidth="3"
+            />
+            <line
+              id="Line_870"
+              data-name="Line 870"
+              y2="10.742"
+              transform="translate(9.717 9.717) rotate(135)"
+              fill="none"
+              stroke="var(--text300)"
+              strokeLinecap="round"
+              strokeWidth="3"
+            />
+          </svg>
+        )
       default:
         return <svg></svg>
     }
@@ -83,5 +146,3 @@ const Icon = ({ icon, color }: IconProps) => {
 
   return returnSVG()
 }
-
-export default Icon

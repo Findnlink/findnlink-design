@@ -1,9 +1,17 @@
 import React from 'react'
 import { HeaderProps } from './Header.types'
+//@ts-ignore
 import styles from './Header.module.scss'
-import Icon from '../../Icon/Icon'
+import { Icon } from '../../Icon/Icon'
 
-const Header = ({ text, color, itemCount, dragHandleProps }: HeaderProps) => {
+const Header = ({
+  text,
+  color,
+  itemCount,
+  dragHandleProps,
+  deleteColumn,
+  columnIndex,
+}: HeaderProps) => {
   return (
     <div
       {...dragHandleProps}
@@ -15,7 +23,7 @@ const Header = ({ text, color, itemCount, dragHandleProps }: HeaderProps) => {
         <span className={styles.itemCount}>{itemCount}</span>
         <span>{text}</span>
       </div>
-      <div className={styles.icon} onClick={() => console.log('Clicked')}>
+      <div className={styles.icon} onClick={() => deleteColumn!(columnIndex!)}>
         <Icon icon="itemMenu" />
       </div>
     </div>

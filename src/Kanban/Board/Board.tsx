@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import { BoardProps } from './Board.types'
+//@ts-ignore
 import styles from './Board.module.scss'
 import Column from '../Column/Column'
 import ColumnType from '../Column/Column.types'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import ColumnProps from '../Column/Column.types'
+import Add from '../Add/Add'
 
-const Board = ({
+export const Board = ({
   columns,
   setColumns,
   title,
@@ -32,7 +34,6 @@ const Board = ({
 
     if (result.type === 'BOARD') {
       // reordering columns
-
       const ordered: string[] = reorder(columns, source.index, destination.index)
 
       setColumns({ columns: ordered })
@@ -80,7 +81,7 @@ const Board = ({
 
   const addItem = (columnIndex: number, columnId: string) => {
     columns[columnIndex].items.push({
-      text: 'a',
+      text: 'item',
       position: columns[columnIndex].items.length,
       columnId: columnId,
       _id: Math.random().toString(36).substr(2, 9),
@@ -89,20 +90,40 @@ const Board = ({
   }
 
   const deleteItem = (columnIndex: number, itemIndex: number) => {
-    console.log('columnIndex', columnIndex, 'itemIndex', itemIndex)
     columns[columnIndex].items.splice(itemIndex, 1)
     setColumns({ columns: columns })
   }
 
-  const editItem = (columnIndex: number, itemIndex: number) => {
-    console.log('columnIndex', columnIndex, 'itemIndex', itemIndex)
-    columns[columnIndex].items.splice(itemIndex, 1)
+  const editItem = (columnIndex: number, itemIndex: number, text: string) => {
+    columns[columnIndex].items[itemIndex].text = text
     setColumns({ columns: columns })
   }
 
-  const addColumn = () => {}
-  const deleteColumn = () => {}
-  const editColumn = () => {}
+  const addColumn = () => {
+    console.log('data._id', _id)
+
+    columns.push({
+      title: 'title',
+      position: columns.length,
+      color: 'var(--text200)',
+      _id: Math.random().toString(36).substr(2, 9),
+      items: [],
+    })
+    setColumns({ columns: columns })
+
+    console.log(columns)
+    console.log('_id', _id)
+  }
+
+  const deleteColumn = (columnIndex: number) => {
+    columns.splice(columnIndex, 1)
+    setColumns({ columns: columns })
+  }
+
+  const editColumn = (columnIndex: number, title: string) => {
+    columns[columnIndex].title = title
+    setColumns({ columns: columns })
+  }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -118,7 +139,6 @@ const Board = ({
                       color={col.color}
                       position={col.position}
                       _id={col._id}
-                      boardId={col.boardId}
                       createdAt={col.createdAt}
                       updatedAt={col.updatedAt}
                       items={col.items}
@@ -127,6 +147,9 @@ const Board = ({
                       index={index}
                       addItem={addItem}
                       deleteItem={deleteItem}
+                      editItem={editItem}
+                      deleteColumn={deleteColumn}
+                      editColumn={editColumn}
                     />
                     {provided.placeholder}
                   </div>
@@ -134,11 +157,10 @@ const Board = ({
               </Draggable>
             ))}
             {provided.placeholder}
+            <Add isColumn text={i18n?.addNew || 'Add new'} onClick={() => addColumn()} />
           </div>
         )}
       </Droppable>
     </DragDropContext>
   )
 }
-
-export default Board

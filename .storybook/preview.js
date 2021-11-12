@@ -16,8 +16,8 @@ export const parameters = {
       base: 'dark',
       brandTitle: 'Findnlink',
       brandUrl: 'https://www.findnlink.com',
-      appBg: '#141414',
-      appContentBg: '#1E1E1E',
+      appBg: '#1E1E1E',
+      appContentBg: '#141414',
       barBg: '#1E1E1E',
       docs: {
         theme: themes.dark,
@@ -29,8 +29,8 @@ export const parameters = {
       base: 'light',
       brandTitle: 'Findnlink',
       brandUrl: 'https://www.findnlink.com',
-      appBg: '#E1E1E1',
-      appContentBg: '#EBEBEB',
+      appBg: '#EBEBEB',
+      appContentBg: '#E1E1E1',
       barBg: '#EBEBEB',
       docs: {
         theme: themes.normal,

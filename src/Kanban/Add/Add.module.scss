@@ -11,6 +11,14 @@
   border: 2px solid transparent;
   transition: all 0.2s ease;
 
+  &.column {
+    min-width: calc(300px - 2 * 10px - 2 * 2px);
+    width: calc(300px - 2 * 10px - 2 * 2px);
+    height: 28px;
+    margin: 8px 5px 0px 5px;
+    padding-right: 10px;
+  }
+
   svg {
     margin: 5px 5px 5px 0px;
   }

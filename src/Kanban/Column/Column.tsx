@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ColumnProps from './Column.types'
+//@ts-ignore
 import styles from './Column.module.scss'
 import Add from '../Add/Add'
 import Item from '../Item/Item'
@@ -13,7 +14,6 @@ const Column = ({
   color,
   position,
   _id,
-  boardId,
   items,
   createdAt,
   updatedAt,
@@ -22,6 +22,9 @@ const Column = ({
   index,
   addItem,
   deleteItem,
+  editItem,
+  deleteColumn,
+  editColumn,
 }: ColumnProps) => {
   return (
     <div data-testid={'Column'} className={styles.column}>
@@ -32,6 +35,8 @@ const Column = ({
             text={title}
             itemCount={items.length}
             color={color}
+            deleteColumn={deleteColumn!}
+            columnIndex={index!}
           />
           <Droppable droppableId={String(index)} key={_id} type="COLUMN">
             {(provided: any) => (
@@ -55,8 +60,10 @@ const Column = ({
                           deleteItem={deleteItem}
                           itemIndex={itemIndex}
                           columnIndex={index}
+                          editItem={editItem}
                         />
                         {provided.placeholder}
+                        {}
                       </div>
                     )}
                   </Draggable>
@@ -66,11 +73,7 @@ const Column = ({
             )}
           </Droppable>
 
-          <Add
-            text={i18n?.addNew || 'Add new'}
-            color={color}
-            onClick={() => addItem!(index!, _id!)}
-          />
+          <Add text={i18n?.addNew || 'Add new'} onClick={() => addItem!(index!, _id!)} />
         </>
       ) : (
         <SkeletonTheme baseColor="var(--bg200)" highlightColor="var(--bg300)">

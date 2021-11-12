@@ -1,6 +1,7 @@
 module.exports = (componentName) => ({
   content: `import React from "react";
 import { ${componentName}Props } from "./${componentName}.types";
+//@ts-ignore
 import styles from "./${componentName}.module.scss";
 
 export const ${componentName} = ({ foo }: ${componentName}Props) => {
