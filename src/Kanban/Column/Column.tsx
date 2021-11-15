@@ -20,11 +20,12 @@ const Column = ({
   dragHandleProps,
   i18n,
   index,
-  addItem,
-  deleteItem,
-  editItem,
-  deleteColumn,
-  editColumn,
+  _addItem,
+  _deleteItem,
+  _editItem,
+  _deleteColumn,
+  _editColumn,
+  isDragging,
 }: ColumnProps) => {
   return (
     <div data-testid={'Column'} className={styles.column}>
@@ -35,8 +36,9 @@ const Column = ({
             text={title}
             itemCount={items.length}
             color={color}
-            deleteColumn={deleteColumn!}
+            _deleteColumn={_deleteColumn!}
             columnIndex={index!}
+            isDragging={isDragging}
           />
           <Droppable droppableId={String(index)} key={_id} type="COLUMN">
             {(provided: any) => (
@@ -57,13 +59,12 @@ const Column = ({
                           createdAt={item.createdAt}
                           updatedAt={item.updatedAt}
                           isDragging={snapshot.isDragging}
-                          deleteItem={deleteItem}
+                          _deleteItem={_deleteItem}
                           itemIndex={itemIndex}
                           columnIndex={index}
-                          editItem={editItem}
+                          _editItem={_editItem}
                         />
                         {provided.placeholder}
-                        {}
                       </div>
                     )}
                   </Draggable>
@@ -73,7 +74,7 @@ const Column = ({
             )}
           </Droppable>
 
-          <Add text={i18n?.addNew || 'Add new'} onClick={() => addItem!(index!, _id!)} />
+          <Add text={i18n?.addNew || 'Add new'} onClick={() => _addItem!(index!, _id!)} />
         </>
       ) : (
         <SkeletonTheme baseColor="var(--bg200)" highlightColor="var(--bg300)">

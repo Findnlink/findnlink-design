@@ -3,6 +3,7 @@ export interface HeaderProps {
   itemCount: number
   color: string
   dragHandleProps: any
-  deleteColumn: (columnIndex: number) => void
+  _deleteColumn: (columnIndex: number) => void
   columnIndex: number
+  isDragging?: boolean
 }

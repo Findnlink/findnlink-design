@@ -9,21 +9,22 @@ const Header = ({
   color,
   itemCount,
   dragHandleProps,
-  deleteColumn,
+  _deleteColumn,
   columnIndex,
+  isDragging,
 }: HeaderProps) => {
   return (
     <div
       {...dragHandleProps}
       data-testid={'Header'}
       className={styles.header}
-      style={{ color: color }}
+      style={isDragging ? { border: '2px solid var(--text400)', color } : { color }}
     >
       <div className={styles.text}>
         <span className={styles.itemCount}>{itemCount}</span>
         <span>{text}</span>
       </div>
-      <div className={styles.icon} onClick={() => deleteColumn!(columnIndex!)}>
+      <div className={styles.icon} onClick={() => _deleteColumn!(columnIndex!)}>
         <Icon icon="itemMenu" />
       </div>
     </div>

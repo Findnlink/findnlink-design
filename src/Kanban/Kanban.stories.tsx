@@ -36,6 +36,7 @@ export const board = () => {
       createdAt={data.createdAt}
       updatedAt={data.updatedAt}
       i18n={{ addNew: 'Add new' }}
+      emitter={null}
     />
   )
 }

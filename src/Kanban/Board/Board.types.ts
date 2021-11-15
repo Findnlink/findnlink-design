@@ -9,4 +9,5 @@ export interface BoardProps {
   createdAt?: string
   updatedAt?: string
   i18n: { addNew: string }
+  emitter?: any
 }

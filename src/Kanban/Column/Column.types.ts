@@ -11,9 +11,10 @@ export default interface ColumnProps {
   dragHandleProps?: any
   i18n?: { addNew: string }
   index?: number
-  addItem?: (columnIndex: number, columnId: string) => void
-  deleteItem?: (columnIndex: number, itemIndex: number) => void
-  editItem?: (columnIndex: number, itemIndex: number, text: string) => void
-  deleteColumn?: (columnIndex: number) => void
-  editColumn?: (columnIndex: number, columnId: string) => void
+  isDragging?: boolean
+  _addItem?: (columnIndex: number, columnId: string) => void
+  _deleteItem?: (columnIndex: number, itemIndex: number) => void
+  _editItem?: (columnIndex: number, itemIndex: number, text: string) => void
+  _deleteColumn?: (columnIndex: number) => void
+  _editColumn?: (columnIndex: number, columnId: string) => void
 }

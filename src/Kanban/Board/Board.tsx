@@ -17,6 +17,7 @@ export const Board = ({
   createdAt,
   updatedAt,
   i18n,
+  emitter,
 }: BoardProps) => {
   const onDragEnd = (result: any) => {
     // dropped nowhere
@@ -34,15 +35,15 @@ export const Board = ({
 
     if (result.type === 'BOARD') {
       // reordering columns
-      const ordered: string[] = reorder(columns, source.index, destination.index)
-
-      setColumns({ columns: ordered })
+      const ordered: any[] = reorder(columns, source.index, destination.index)
+      console.log('ordered', ordered)
+      setColumns((prev: any) => ({ ...prev, columns: ordered }))
 
       return
     } else if (result.type === 'COLUMN') {
       // reordering items
       const data = reorderColumns(columns, source, destination)
-      setColumns({ columns: data })
+      setColumns((prev: any) => ({ ...prev, columns: data }))
     }
   }
 
@@ -79,60 +80,102 @@ export const Board = ({
     return result
   }
 
-  const addItem = (columnIndex: number, columnId: string) => {
+  const _addItem = (columnIndex: number, columnId: string) => {
     columns[columnIndex].items.push({
       text: 'item',
       position: columns[columnIndex].items.length,
       columnId: columnId,
       _id: Math.random().toString(36).substr(2, 9),
     })
-    setColumns({ columns: columns })
+    setColumns((prev: any) => ({ ...prev, columns: columns }))
+    if (emitter) {
+      emitter.emit('ADD_ITEM', { boardId: _id!, columnId: columns[columnIndex]._id, text: 'item' })
+    }
   }
 
-  const deleteItem = (columnIndex: number, itemIndex: number) => {
+  const _deleteItem = (columnIndex: number, itemIndex: number) => {
+    if (emitter) {
+      emitter.emit('DELETE_ITEM', {
+        boardId: _id!,
+        columnId: columns[columnIndex]._id,
+        itemId: columns[columnIndex].items[itemIndex]._id,
+      })
+    }
     columns[columnIndex].items.splice(itemIndex, 1)
-    setColumns({ columns: columns })
+    setColumns((prev: any) => ({ ...prev, columns: columns }))
   }
 
-  const editItem = (columnIndex: number, itemIndex: number, text: string) => {
+  const _editItem = (columnIndex: number, itemIndex: number, text: string) => {
+    if (emitter) {
+      emitter.emit('EDIT_ITEM', {
+        boardId: _id!,
+        columnId: columns[columnIndex]._id,
+        itemId: columns[columnIndex].items[itemIndex]._id,
+        text: text,
+        position: columns[columnIndex].items[itemIndex].position,
+      })
+    }
     columns[columnIndex].items[itemIndex].text = text
-    setColumns({ columns: columns })
+    setColumns((prev: any) => ({ ...prev, columns: columns }))
   }
 
-  const addColumn = () => {
-    console.log('data._id', _id)
-
-    columns.push({
-      title: 'title',
-      position: columns.length,
-      color: 'var(--text200)',
-      _id: Math.random().toString(36).substr(2, 9),
-      items: [],
-    })
-    setColumns({ columns: columns })
-
-    console.log(columns)
-    console.log('_id', _id)
+  const _addColumn = () => {
+    if (emitter) {
+      emitter.emit('ADD_COLUMN', {
+        boardId: _id!,
+        title: 'test',
+        color: 'var(--text200)',
+      })
+    }
+    setColumns((prev: any) => ({
+      ...prev,
+      columns: [
+        ...prev.columns,
+        {
+          title: 'title',
+          position: columns.length,
+          color: 'var(--text200)',
+          _id: Math.random().toString(36).substr(2, 9),
+          items: [],
+        },
+      ],
+    }))
   }
 
-  const deleteColumn = (columnIndex: number) => {
+  const _deleteColumn = (columnIndex: number) => {
+    if (emitter) {
+      emitter.emit('DELETE_COLUMN', {
+        boardId: _id!,
+        columnId: columns[columnIndex]._id,
+      })
+    }
     columns.splice(columnIndex, 1)
-    setColumns({ columns: columns })
+    setColumns((prev: any) => ({ ...prev, columns: columns }))
   }
 
-  const editColumn = (columnIndex: number, title: string) => {
+  const _editColumn = (columnIndex: number, title: string) => {
     columns[columnIndex].title = title
-    setColumns({ columns: columns })
+    setColumns((prev: any) => ({ ...prev, columns: columns }))
+    if (emitter) {
+      emitter.emit('EDIT_COLUMN', {
+        boardId: _id!,
+        columnId: columns[columnIndex]._id,
+        title: title,
+        color: 'var(--text200)',
+        position: columns[columnIndex].position,
+      })
+    }
   }
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <Droppable droppableId="board" direction="horizontal" type="BOARD">
+      <div className={styles.title}>{title}</div>
+      <Droppable droppableId={String(_id)} direction="horizontal" type="BOARD">
         {(provided) => (
           <div ref={provided.innerRef} {...provided.droppableProps} className={styles.board}>
             {columns.map((col: ColumnProps, index: number) => (
               <Draggable draggableId={String(index)} key={index} index={index}>
-                {(provided: any) => (
+                {(provided: any, snapshot: any) => (
                   <div ref={provided.innerRef} {...provided.draggableProps}>
                     <Column
                       title={col.title}
@@ -145,11 +188,12 @@ export const Board = ({
                       dragHandleProps={provided.dragHandleProps}
                       i18n={i18n}
                       index={index}
-                      addItem={addItem}
-                      deleteItem={deleteItem}
-                      editItem={editItem}
-                      deleteColumn={deleteColumn}
-                      editColumn={editColumn}
+                      _addItem={_addItem}
+                      _deleteItem={_deleteItem}
+                      _editItem={_editItem}
+                      _deleteColumn={_deleteColumn}
+                      _editColumn={_editColumn}
+                      isDragging={snapshot.isDragging}
                     />
                     {provided.placeholder}
                   </div>
@@ -157,7 +201,7 @@ export const Board = ({
               </Draggable>
             ))}
             {provided.placeholder}
-            <Add isColumn text={i18n?.addNew || 'Add new'} onClick={() => addColumn()} />
+            <Add isColumn text={i18n?.addNew || 'Add new'} onClick={() => _addColumn()} />
           </div>
         )}
       </Droppable>

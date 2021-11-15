@@ -2,3 +2,9 @@
   display: flex;
   user-select: none;
 }
+
+.title {
+  margin: 20px 5px;
+  font-size: var(--fontXL);
+  color: var(--text100);
+}
