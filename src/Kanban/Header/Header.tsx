@@ -26,12 +26,30 @@ const Header = ({
       menu={
         <div onClick={() => setOpen(false)}>
           <div>
-            <span style={{ backgroundColor: 'var(--text300)' }} />
-            <span style={{ backgroundColor: '#796AFF70' }} />
-            <span style={{ backgroundColor: '#FF6A6A70' }} />
-            <span style={{ backgroundColor: '#FC762A70' }} />
-            <span style={{ backgroundColor: '#FFAD1F70' }} />
-            <span style={{ backgroundColor: '#17BF6370' }} />
+            <span
+              onClick={() => _editColumn!(columnIndex, value, 'var(--text200)')}
+              style={{ backgroundColor: 'var(--text200)' }}
+            />
+            <span
+              onClick={() => _editColumn!(columnIndex, value, '#796AFF')}
+              style={{ backgroundColor: '#796AFF' }}
+            />
+            <span
+              onClick={() => _editColumn!(columnIndex, value, '#FF6A6A')}
+              style={{ backgroundColor: '#FF6A6A' }}
+            />
+            <span
+              onClick={() => _editColumn!(columnIndex, value, '#FC762A')}
+              style={{ backgroundColor: '#FC762A' }}
+            />
+            <span
+              onClick={() => _editColumn!(columnIndex, value, '#FFAD1F')}
+              style={{ backgroundColor: '#FFAD1F' }}
+            />
+            <span
+              onClick={() => _editColumn!(columnIndex, value, '#17BF63')}
+              style={{ backgroundColor: '#17BF63' }}
+            />
           </div>
           <hr />
           <button onClick={() => setEditMode(true)}>
@@ -71,7 +89,7 @@ const Header = ({
               }}
               onBlur={(e) => {
                 setEditMode(false)
-                //_editColumn!(columnIndex!, itemIndex!, value)
+                _editColumn!(columnIndex!, value, color)
               }}
             />
           ) : (

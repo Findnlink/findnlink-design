@@ -16,5 +16,5 @@ export default interface ColumnProps {
   _deleteItem?: (columnIndex: number, itemIndex: number) => void
   _editItem?: (columnIndex: number, itemIndex: number, text: string) => void
   _deleteColumn?: (columnIndex: number) => void
-  _editColumn?: (columnIndex: number, columnId: string) => void
+  _editColumn?: (columnIndex: number, title: string, color: string) => void
 }

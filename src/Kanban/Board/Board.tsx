@@ -153,8 +153,9 @@ export const Board = ({
     setColumns((prev: any) => ({ ...prev, columns: columns }))
   }
 
-  const _editColumn = (columnIndex: number, title: string) => {
+  const _editColumn = (columnIndex: number, title: string, color: string) => {
     columns[columnIndex].title = title
+    columns[columnIndex].color = color
     setColumns((prev: any) => ({ ...prev, columns: columns }))
     if (emitter)
       emitter.emit('EDIT_COLUMN', {
