@@ -165,3 +165,8 @@ input,
 select {
   vertical-align: middle;
 }
+
+.KanbanSkeleton {
+  display: flex;
+  flex-direction: row;
+}

@@ -64,7 +64,6 @@
     "jest": "^27.3.1",
     "react": "^17.0.0",
     "react-beautiful-dnd": "^13.1.0",
-    "react-contextmenu": "^2.14.0",
     "react-dom": "^17.0.2",
     "react-loading-skeleton": "^3.0.1",
     "sass": "^1.43.4",

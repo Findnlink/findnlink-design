@@ -24,10 +24,12 @@
     }
   }
 
-  .text {
+  .textWrapper {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    overflow: hidden;
+
     .itemCount {
       display: flex;
       align-items: center;
@@ -36,6 +38,11 @@
       border-radius: 5px;
       background-color: var(--bg100);
       margin-right: 5px;
+    }
+
+    .text {
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
   .right {

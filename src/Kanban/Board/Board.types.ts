@@ -8,6 +8,6 @@ export interface BoardProps {
   _id?: string
   createdAt?: string
   updatedAt?: string
-  i18n: { addNew: string }
+  i18n: { addNew: string; remove: string; edit: string }
   emitter?: any
 }

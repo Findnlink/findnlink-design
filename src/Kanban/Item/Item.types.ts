@@ -10,4 +10,5 @@ export default interface ItemProps {
   itemIndex?: number
   _deleteItem?: (columnIndex: number, itemIndex: number) => void
   _editItem?: (columnIndex: number, itemIndex: number, text: string) => void
+  i18n?: { addNew: string; remove: string; edit: string }
 }

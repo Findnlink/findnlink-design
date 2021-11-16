@@ -7,7 +7,6 @@
   border-radius: calc(var(--borderRadius) / 2);
   border: 2px solid transparent;
   margin: 4px 0px;
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   line-height: 1.2;
@@ -20,9 +19,33 @@
     cursor: pointer;
     border-radius: calc(var(--borderRadius) / 2);
     transition: all 0.1s ease-in-out;
+    align-self: center;
 
     &:hover {
       background-color: var(--bg300);
+    }
+  }
+
+  .textWrapper {
+    width: calc(100% - 2 * 10px);
+
+    .input {
+      color: var(--text200);
+      background-color: var(--bg200);
+      font-size: var(--fontL);
+      cursor: text;
+      font-weight: var(--weightNormal);
+      width: 100%;
+      border: none !important;
+      resize: none;
+      height: 100%;
+      min-height: 50px;
+      max-height: 300px;
+      outline: none;
+    }
+
+    .text {
+      overflow-wrap: break-word;
     }
   }
 

@@ -139,6 +139,43 @@ export const Icon = ({ icon, color }: IconProps) => {
             />
           </svg>
         )
+
+      case 'edit':
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="11.756"
+            height="11.756"
+            viewBox="0 0 11.756 11.756"
+          >
+            <path
+              id="Icon_material-edit"
+              data-name="Icon material-edit"
+              d="M4.5,13.8v2.449H6.949L14.171,9.03,11.722,6.581ZM16.065,7.136a.65.65,0,0,0,0-.921L14.537,4.687a.65.65,0,0,0-.921,0l-1.2,1.2L14.87,8.331Z"
+              transform="translate(-4.5 -4.496)"
+              fill="var(--text300)"
+            />
+          </svg>
+        )
+
+      case 'remove':
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="12.281"
+            height="12.281"
+            viewBox="0 0 12.281 12.281"
+          >
+            <path
+              id="Icon_material-remove-circle"
+              data-name="Icon material-remove-circle"
+              d="M9.141,3a6.141,6.141,0,1,0,6.141,6.141A6.143,6.143,0,0,0,9.141,3Zm3.07,6.755H6.07V8.527h6.141Z"
+              transform="translate(-3 -3)"
+              fill="var(--text300)"
+            />
+          </svg>
+        )
+
       default:
         return <svg></svg>
     }

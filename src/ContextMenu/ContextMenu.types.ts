@@ -1,3 +1,10 @@
+import { SetStateAction } from 'react'
+
 export interface ContextMenuProps {
-    foo: string;
+  children: any
+  menu: any
+  open: boolean
+  setOpen: any
+  location: { x: number; y: number }
+  setLocation: any
 }

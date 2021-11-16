@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ItemProps from './Item.types'
 //@ts-ignore
 import styles from './Item.module.scss'
@@ -7,6 +7,8 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { Icon } from '../../Icon/Icon'
 import { Modal } from '../../Modal'
 import { Button } from '../../Button/Button'
+import { ContextMenu } from '../../ContextMenu/ContextMenu'
+import { Input } from '../..'
 
 const Item = ({
   text,
@@ -20,26 +22,91 @@ const Item = ({
   columnIndex,
   itemIndex,
   _editItem,
+  i18n,
 }: ItemProps) => {
   const [open, setOpen] = useState(false)
+  const [location, setLocation] = useState({ x: 0, y: 0 })
   const [value, setValue] = useState(text)
+  const [editMode, setEditMode] = useState(false)
+
+  function auto_grow(element: any) {
+    // element.style.height = '5px'
+    // element.style.height = element.scrollHeight + 'px'
+  }
 
   return (
     <>
-      <div
-        data-testid={'Item'}
-        className={styles.item}
-        style={isDragging ? { border: '2px solid var(--text400)' } : {}}
-        onClick={() => setOpen(true)}
+      <ContextMenu
+        menu={
+          <div onClick={() => setOpen(false)}>
+            <button
+              onClick={() => {
+                setEditMode(true)
+              }}
+            >
+              <Icon icon={'edit'} />
+              {i18n!.edit!}
+            </button>
+            <button
+              onClick={() => {
+                _deleteItem!(columnIndex!, itemIndex!)
+              }}
+            >
+              <Icon icon={'remove'} />
+              {i18n!.remove!}
+            </button>
+          </div>
+        }
+        open={open}
+        setOpen={setOpen}
+        location={location}
+        setLocation={setLocation}
       >
-        {/* {focus ? <input value={text}></input> : text} */}
-        {text}
-        <div className={styles.icon} onClick={() => _deleteItem!(columnIndex!, itemIndex!)}>
-          <Icon icon="itemMenu" />
-        </div>
-      </div>
+        <div
+          data-testid={'Item'}
+          className={styles.item}
+          style={isDragging ? { border: '2px solid var(--text400)' } : {}}
+        >
+          {/* {focus ? <input value={text}></input> : text} */}
+          <span className={styles.textWrapper}>
+            {editMode ? (
+              <textarea
+                className={styles.input}
+                autoFocus
+                value={value}
+                onChange={(e) => {
+                  setValue(e.target.value)
+                  auto_grow(e.target)
+                }}
+                onBlur={(e) => {
+                  setEditMode(false)
+                  _editItem!(columnIndex!, itemIndex!, value)
+                }}
+                onFocus={(e) =>
+                  e.currentTarget.setSelectionRange(
+                    e.currentTarget.value.length,
+                    e.currentTarget.value.length,
+                  )
+                }
+              />
+            ) : (
+              <span>{value}</span>
+            )}
+          </span>
 
-      <Modal
+          <div
+            className={styles.icon}
+            onClick={(e) => {
+              setLocation({ x: e.pageX, y: e.pageY })
+              setOpen(true)
+            }}
+          >
+            <Icon icon="itemMenu" />
+          </div>
+        </div>
+      </ContextMenu>
+
+      {/* <Modal
         open={open}
         onClose={() => {
           setOpen(false)
@@ -58,7 +125,7 @@ const Item = ({
         >
           Save
         </Button>
-      </Modal>
+      </Modal> */}
     </>
   )
 }

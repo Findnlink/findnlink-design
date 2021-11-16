@@ -5,6 +5,7 @@ import Card from './Column/Column'
 import Header from './Header/Header'
 import Item from './Item/Item'
 import _data from '../../data.json'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 export default {
   title: 'Kanban',
@@ -35,8 +36,7 @@ export const board = () => {
       projectId={data.projectId}
       createdAt={data.createdAt}
       updatedAt={data.updatedAt}
-      i18n={{ addNew: 'Add new' }}
-      emitter={null}
+      i18n={{ addNew: 'Add new', remove: 'Remove', edit: 'Edit' }}
     />
   )
 }

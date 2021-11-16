@@ -9,7 +9,7 @@ export default interface ColumnProps {
   createdAt?: string
   updatedAt?: string
   dragHandleProps?: any
-  i18n?: { addNew: string }
+  i18n?: { addNew: string; remove: string; edit: string }
   index?: number
   isDragging?: boolean
   _addItem?: (columnIndex: number, columnId: string) => void
