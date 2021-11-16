@@ -25,7 +25,11 @@ const Column = ({
   _deleteColumn,
   _editColumn,
   isDragging,
+  newColumn,
+  setNewColumn,
 }: ColumnProps) => {
+  const [newItem, setNewItem] = useState<boolean>(false)
+
   return (
     <div data-testid={'Column'} className={styles.column}>
       <Header
@@ -38,6 +42,8 @@ const Column = ({
         columnIndex={index!}
         isDragging={isDragging}
         i18n={i18n}
+        newColumn={newColumn}
+        setNewColumn={setNewColumn}
       />
       <Droppable droppableId={String(index)} key={_id} type="COLUMN">
         {(provided: any) => (
@@ -63,6 +69,8 @@ const Column = ({
                       columnIndex={index}
                       _editItem={_editItem}
                       i18n={i18n}
+                      newItem={itemIndex === items.length - 1 ? newItem : false}
+                      setNewItem={setNewItem}
                     />
                     {provided.placeholder}
                   </div>
@@ -74,7 +82,13 @@ const Column = ({
         )}
       </Droppable>
 
-      <Add text={i18n?.addNew || 'Add new'} onClick={() => _addItem!(index!, _id!)} />
+      <Add
+        text={i18n?.addNew || 'Add new'}
+        onClick={() => {
+          _addItem!(index!, _id!)
+          setNewItem(true)
+        }}
+      />
     </div>
   )
 }

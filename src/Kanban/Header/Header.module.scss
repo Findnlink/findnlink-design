@@ -45,6 +45,16 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
+    .input {
+      background-color: var(--bg200);
+      font-size: var(--fontL);
+      cursor: text;
+      font-weight: var(--weightNormal);
+      width: 100%;
+      border: none !important;
+      outline: none;
+    }
   }
   .right {
     cursor: pointer;

@@ -1,14 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import ItemProps from './Item.types'
 //@ts-ignore
 import styles from './Item.module.scss'
 import 'react-loading-skeleton/dist/skeleton.css'
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import { Icon } from '../../Icon/Icon'
-import { Modal } from '../../Modal'
-import { Button } from '../../Button/Button'
+import { Icon } from '../../Icon'
 import { ContextMenu } from '../../ContextMenu/ContextMenu'
-import { Input } from '../..'
 
 const Item = ({
   text,
@@ -23,15 +19,17 @@ const Item = ({
   itemIndex,
   _editItem,
   i18n,
+  newItem,
+  setNewItem,
 }: ItemProps) => {
   const [open, setOpen] = useState(false)
   const [location, setLocation] = useState({ x: 0, y: 0 })
   const [value, setValue] = useState(text)
-  const [editMode, setEditMode] = useState(false)
+  const [editMode, setEditMode] = useState(newItem)
 
   function auto_grow(element: any) {
-    // element.style.height = '5px'
-    // element.style.height = element.scrollHeight + 'px'
+    element.style.height = '5px'
+    element.style.height = element.scrollHeight + 'px'
   }
 
   return (
@@ -80,6 +78,7 @@ const Item = ({
                 }}
                 onBlur={(e) => {
                   setEditMode(false)
+                  setNewItem!(false)
                   _editItem!(columnIndex!, itemIndex!, value)
                 }}
                 onFocus={(e) =>

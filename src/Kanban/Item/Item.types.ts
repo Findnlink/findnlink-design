@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default interface ItemProps {
   text: string
   position: number
@@ -11,4 +13,6 @@ export default interface ItemProps {
   _deleteItem?: (columnIndex: number, itemIndex: number) => void
   _editItem?: (columnIndex: number, itemIndex: number, text: string) => void
   i18n?: { addNew: string; remove: string; edit: string }
+  newItem?: boolean
+  setNewItem?: React.Dispatch<React.SetStateAction<boolean>>
 }

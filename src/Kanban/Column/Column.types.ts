@@ -1,4 +1,5 @@
 import Item from '../Item/Item.types'
+import React from 'react'
 
 export default interface ColumnProps {
   title: string
@@ -17,4 +18,6 @@ export default interface ColumnProps {
   _editItem?: (columnIndex: number, itemIndex: number, text: string) => void
   _deleteColumn?: (columnIndex: number) => void
   _editColumn?: (columnIndex: number, title: string, color: string) => void
+  newColumn: boolean
+  setNewColumn: React.Dispatch<React.SetStateAction<boolean>>
 }

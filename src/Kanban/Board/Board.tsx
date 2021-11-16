@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { BoardProps } from './Board.types'
 //@ts-ignore
 import styles from './Board.module.scss'
 import Column from '../Column/Column'
 import ColumnType from '../Column/Column.types'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import ColumnProps from '../Column/Column.types'
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import Add from '../Add/Add'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
@@ -20,6 +20,8 @@ export const Board = ({
   i18n,
   emitter,
 }: BoardProps) => {
+  const [newColumn, setNewColumn] = useState<boolean>(false)
+
   const onDragEnd = (result: any) => {
     // dropped nowhere
     if (!result.destination) {
@@ -83,14 +85,14 @@ export const Board = ({
 
   const _addItem = (columnIndex: number, columnId: string) => {
     columns[columnIndex].items.push({
-      text: 'item',
+      text: '',
       position: columns[columnIndex].items.length,
       columnId: columnId,
       _id: Math.random().toString(36).substr(2, 9),
     })
     setColumns((prev: any) => ({ ...prev, columns: columns }))
     if (emitter)
-      emitter.emit('ADD_ITEM', { boardId: _id!, columnId: columns[columnIndex]._id, text: 'item' })
+      emitter.emit('ADD_ITEM', { boardId: _id!, columnId: columns[columnIndex]._id, text: '' })
   }
 
   const _deleteItem = (columnIndex: number, itemIndex: number) => {
@@ -123,7 +125,7 @@ export const Board = ({
     if (emitter)
       emitter.emit('ADD_COLUMN', {
         boardId: _id!,
-        title: 'test',
+        title: '',
         color: 'var(--text200)',
       })
 
@@ -132,7 +134,7 @@ export const Board = ({
       columns: [
         ...prev.columns,
         {
-          title: 'title',
+          title: '',
           position: columns.length,
           color: 'var(--text200)',
           _id: Math.random().toString(36).substr(2, 9),
@@ -196,6 +198,8 @@ export const Board = ({
                           _deleteColumn={_deleteColumn}
                           _editColumn={_editColumn}
                           isDragging={snapshot.isDragging}
+                          newColumn={index === columns.length - 1 ? newColumn : false}
+                          setNewColumn={setNewColumn}
                         />
                         {provided.placeholder}
                       </div>
@@ -203,7 +207,14 @@ export const Board = ({
                   </Draggable>
                 ))}
                 {provided.placeholder}
-                <Add isColumn text={i18n?.addNew || 'Add new'} onClick={() => _addColumn()} />
+                <Add
+                  isColumn
+                  text={i18n?.addNew || 'Add new'}
+                  onClick={() => {
+                    _addColumn()
+                    setNewColumn(true)
+                  }}
+                />
               </div>
             )}
           </Droppable>

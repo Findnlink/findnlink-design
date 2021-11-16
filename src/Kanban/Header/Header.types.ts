@@ -1,3 +1,5 @@
+import React from 'react'
+
 export interface HeaderProps {
   text: string
   itemCount: number
@@ -8,4 +10,6 @@ export interface HeaderProps {
   columnIndex: number
   isDragging?: boolean
   i18n?: { addNew: string; remove: string; edit: string }
+  newColumn: boolean
+  setNewColumn: React.Dispatch<React.SetStateAction<boolean>>
 }

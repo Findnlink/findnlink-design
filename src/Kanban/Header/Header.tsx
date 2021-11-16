@@ -15,11 +15,17 @@ const Header = ({
   columnIndex,
   isDragging,
   i18n,
+  newColumn,
+  setNewColumn,
 }: HeaderProps) => {
   const [open, setOpen] = useState(false)
   const [location, setLocation] = useState({ x: 0, y: 0 })
   const [value, setValue] = useState(text)
-  const [editMode, setEditMode] = useState(false)
+  const [editMode, setEditMode] = useState(newColumn)
+
+  useEffect(() => {
+    setValue(text)
+  }, [text])
 
   return (
     <ContextMenu
@@ -89,8 +95,11 @@ const Header = ({
               }}
               onBlur={(e) => {
                 setEditMode(false)
+                setNewColumn(false)
                 _editColumn!(columnIndex!, value, color)
               }}
+              style={{ color: color }}
+              maxLength={28}
             />
           ) : (
             <span>{text}</span>
