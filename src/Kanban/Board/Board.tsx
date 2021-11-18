@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BoardProps } from './Board.types'
 //@ts-ignore
 import styles from './Board.module.scss'
@@ -38,19 +38,36 @@ export const Board = ({
 
     if (result.type === 'BOARD') {
       // reordering columns
-      const ordered: any[] = reorder(columns, source.index, destination.index)
+      let ordered: any[] = reorder(columns, source.index, destination.index)
+      ordered = setPosition(ordered)
       console.log('ordered', ordered)
       setColumns((prev: any) => ({ ...prev, columns: ordered }))
 
-      return
+      if (emitter)
+        emitter.emit('REORDER_COLUMNS', {
+          boardId: _id!,
+          columns: ordered,
+        })
     } else if (result.type === 'COLUMN') {
       // reordering items
       const data = reorderColumns(columns, source, destination)
       setColumns((prev: any) => ({ ...prev, columns: data }))
+
+      let current = [...data[source.droppableId].items]
+      let next = [...data[destination.droppableId].items]
+      let target = current[source.index]
+
+      // if (emitter)
+      //   emitter.emit('REORDER_ITEMS', {
+      //     boardId: _id!,
+      //     columns: ordered,
+      //   })
     }
   }
 
   const reorderColumns = (columns: ColumnProps[], source: any, destination: any): ColumnType[] => {
+    console.log('startIndex ', source, 'EndIndex ', destination)
+
     const current = [...columns[source.droppableId].items]
     const next = [...columns[destination.droppableId].items]
     const target = current[source.index]
@@ -58,7 +75,7 @@ export const Board = ({
     // moving to same list
     if (source.droppableId === destination.droppableId) {
       const reordered = reorder(current, source.index, destination.index)
-      columns[source.droppableId].items = reordered
+      columns[source.droppableId].items = setPosition(reordered)
       return columns
     }
 
@@ -69,8 +86,8 @@ export const Board = ({
     // insert into next
     next.splice(destination.index, 0, target)
 
-    columns[source.droppableId].items = current
-    columns[destination.droppableId].items = next
+    columns[source.droppableId].items = setPosition(current)
+    columns[destination.droppableId].items = setPosition(next)
 
     return columns
   }
@@ -81,6 +98,15 @@ export const Board = ({
     result.splice(endIndex, 0, removed)
 
     return result
+  }
+
+  const setPosition = (ordered: any[]) => {
+    let withPosition = ordered.map((item, index) => {
+      item.position = index
+      return item
+    })
+    console.log('setPosition', withPosition)
+    return withPosition
   }
 
   const _addItem = (columnIndex: number, columnId: string) => {
@@ -164,7 +190,7 @@ export const Board = ({
         boardId: _id!,
         columnId: columns[columnIndex]._id,
         title: title,
-        color: 'var(--text200)',
+        color: color,
         position: columns[columnIndex].position,
       })
   }
@@ -177,35 +203,37 @@ export const Board = ({
           <Droppable droppableId={String(_id)} direction="horizontal" type="BOARD">
             {(provided) => (
               <div ref={provided.innerRef} {...provided.droppableProps} className={styles.board}>
-                {columns.map((col: ColumnProps, index: number) => (
-                  <Draggable draggableId={String(index)} key={index} index={index}>
-                    {(provided: any, snapshot: any) => (
-                      <div ref={provided.innerRef} {...provided.draggableProps}>
-                        <Column
-                          title={col.title}
-                          color={col.color}
-                          position={col.position}
-                          _id={col._id}
-                          createdAt={col.createdAt}
-                          updatedAt={col.updatedAt}
-                          items={col.items}
-                          dragHandleProps={provided.dragHandleProps}
-                          i18n={i18n}
-                          index={index}
-                          _addItem={_addItem}
-                          _deleteItem={_deleteItem}
-                          _editItem={_editItem}
-                          _deleteColumn={_deleteColumn}
-                          _editColumn={_editColumn}
-                          isDragging={snapshot.isDragging}
-                          newColumn={index === columns.length - 1 ? newColumn : false}
-                          setNewColumn={setNewColumn}
-                        />
-                        {provided.placeholder}
-                      </div>
-                    )}
-                  </Draggable>
-                ))}
+                {columns
+                  .sort((columnA, columnB) => columnA.position - columnB.position)
+                  .map((col: ColumnProps, index: number) => (
+                    <Draggable draggableId={String(index)} key={index} index={index}>
+                      {(provided: any, snapshot: any) => (
+                        <div ref={provided.innerRef} {...provided.draggableProps}>
+                          <Column
+                            title={col.title}
+                            color={col.color}
+                            position={col.position}
+                            _id={col._id}
+                            createdAt={col.createdAt}
+                            updatedAt={col.updatedAt}
+                            items={col.items}
+                            dragHandleProps={provided.dragHandleProps}
+                            i18n={i18n}
+                            index={index}
+                            _addItem={_addItem}
+                            _deleteItem={_deleteItem}
+                            _editItem={_editItem}
+                            _deleteColumn={_deleteColumn}
+                            _editColumn={_editColumn}
+                            isDragging={snapshot.isDragging}
+                            newColumn={index === columns.length - 1 ? newColumn : false}
+                            setNewColumn={setNewColumn}
+                          />
+                          {provided.placeholder}
+                        </div>
+                      )}
+                    </Draggable>
+                  ))}
                 {provided.placeholder}
                 <Add
                   isColumn

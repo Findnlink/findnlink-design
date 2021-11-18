@@ -48,35 +48,37 @@ const Column = ({
       <Droppable droppableId={String(index)} key={_id} type="COLUMN">
         {(provided: any) => (
           <div style={{ width: '100%' }} ref={provided.innerRef} {...provided.droppableProps}>
-            {items.map((item: ItemProps, itemIndex: number) => (
-              <Draggable draggableId={item._id} key={item._id} index={itemIndex}>
-                {(provided: any, snapshot: any) => (
-                  <div
-                    ref={provided.innerRef}
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                  >
-                    <Item
-                      text={item.text}
-                      position={item.position}
-                      _id={item._id}
-                      columnId={item.columnId}
-                      createdAt={item.createdAt}
-                      updatedAt={item.updatedAt}
-                      isDragging={snapshot.isDragging}
-                      _deleteItem={_deleteItem}
-                      itemIndex={itemIndex}
-                      columnIndex={index}
-                      _editItem={_editItem}
-                      i18n={i18n}
-                      newItem={itemIndex === items.length - 1 ? newItem : false}
-                      setNewItem={setNewItem}
-                    />
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Draggable>
-            ))}
+            {items
+              .sort((itemA, itemB) => itemA.position - itemB.position)
+              .map((item: ItemProps, itemIndex: number) => (
+                <Draggable draggableId={item._id} key={item._id} index={itemIndex}>
+                  {(provided: any, snapshot: any) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <Item
+                        text={item.text}
+                        position={item.position}
+                        _id={item._id}
+                        columnId={item.columnId}
+                        createdAt={item.createdAt}
+                        updatedAt={item.updatedAt}
+                        isDragging={snapshot.isDragging}
+                        _deleteItem={_deleteItem}
+                        itemIndex={itemIndex}
+                        columnIndex={index}
+                        _editItem={_editItem}
+                        i18n={i18n}
+                        newItem={itemIndex === items.length - 1 ? newItem : false}
+                        setNewItem={setNewItem}
+                      />
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Draggable>
+              ))}
             {provided.placeholder}
           </div>
         )}
