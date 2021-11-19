@@ -1,6 +1,6 @@
 {
   "name": "@findnlink/ui",
-  "version": "0.2.33",
+  "version": "0.2.40",
   "files": [
     "dist",
     "src"
@@ -39,7 +39,7 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "generate": "node ./util/create-component",
-    "publish": "npm publish --access public"
+    "publish2": "npm publish --access public"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

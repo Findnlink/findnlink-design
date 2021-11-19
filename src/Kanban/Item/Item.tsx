@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ItemProps from './Item.types'
 //@ts-ignore
 import styles from './Item.module.scss'
@@ -26,6 +26,10 @@ const Item = ({
   const [location, setLocation] = useState({ x: 0, y: 0 })
   const [value, setValue] = useState(text)
   const [editMode, setEditMode] = useState(newItem)
+
+  useEffect(() => {
+    setValue(text)
+  }, [text])
 
   function auto_grow(element: any) {
     element.style.height = '5px'

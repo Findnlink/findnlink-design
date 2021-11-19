@@ -57,11 +57,12 @@ export const Board = ({
       let next = [...data[destination.droppableId].items]
       let target = current[source.index]
 
-      // if (emitter)
-      //   emitter.emit('REORDER_ITEMS', {
-      //     boardId: _id!,
-      //     columns: ordered,
-      //   })
+      // TODO: später reorderItems für optimierung
+      if (emitter)
+        emitter.emit('REORDER_COLUMNS', {
+          boardId: _id!,
+          columns: data,
+        })
     }
   }
 
@@ -134,6 +135,9 @@ export const Board = ({
   }
 
   const _editItem = (columnIndex: number, itemIndex: number, text: string) => {
+    columns[columnIndex].items[itemIndex].text = text
+    setColumns((prev: any) => ({ ...prev, columns: columns }))
+
     if (emitter)
       emitter.emit('EDIT_ITEM', {
         boardId: _id!,
@@ -142,9 +146,6 @@ export const Board = ({
         text: text,
         position: columns[columnIndex].items[itemIndex].position,
       })
-
-    columns[columnIndex].items[itemIndex].text = text
-    setColumns((prev: any) => ({ ...prev, columns: columns }))
   }
 
   const _addColumn = () => {
