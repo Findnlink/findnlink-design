@@ -51,7 +51,7 @@ const Column = ({
             {items
               .sort((itemA, itemB) => itemA.position - itemB.position)
               .map((item: ItemProps, itemIndex: number) => (
-                <Draggable draggableId={item._id} key={itemIndex} index={itemIndex}>
+                <Draggable draggableId={item._id} key={item._id} index={itemIndex}>
                   {(provided: any, snapshot: any) => (
                     <div
                       ref={provided.innerRef}
