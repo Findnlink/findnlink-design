@@ -79,7 +79,8 @@ const Column = ({
                   )}
                 </Draggable>
               ))}
-            {provided.placeholder}
+              <div style={{height: "1px"}} />
+              {provided.placeholder}
           </div>
         )}
       </Droppable>
