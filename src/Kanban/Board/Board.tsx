@@ -19,6 +19,7 @@ export const Board = ({
   updatedAt,
   i18n,
   emitter,
+  editList,
 }: BoardProps) => {
   const [newColumn, setNewColumn] = useState<boolean>(false)
 
@@ -196,6 +197,47 @@ export const Board = ({
       })
   }
 
+  // const _isDraggingItem = (columnIndex: number, itemIndex: number) => {
+  //   if (emitter)
+  //     emitter.emit('IS_DRAGGING_ITEM', {
+  //       boardId: _id!,
+  //       columnId: columns[columnIndex]._id,
+  //       itemId: columns[columnIndex].items[itemIndex]._id,
+  //       position: columns[columnIndex].items[itemIndex].position,
+  //     })
+  // }
+
+  const _isEditingItem = (columnIndex: number, itemIndex: number) => {
+    if (emitter)
+      emitter.emit('IS_EDITING_ITEM', {
+        boardId: _id!,
+        columnId: columns[columnIndex]._id,
+        itemId: columns[columnIndex].items[itemIndex]._id,
+        position: columns[columnIndex].items[itemIndex].position,
+      })
+  }
+
+  const _isEditingColumn = (columnIndex: number) => {
+    // if (emitter)
+    //   emitter.emit('IS_EDITING_COLUMN', {
+    //     boardId: _id!,
+    //     columnId: columns[columnIndex]._id,
+    //     itemId: columns[columnIndex].items[itemIndex]._id,
+    //     position: columns[columnIndex].items[itemIndex].position,
+    //   })
+  }
+
+  // const _isDraggingColumn = () => {
+  //   if (emitter)
+  //     emitter.emit('IS_DRAGGING_COLUMN', {
+  //       boardId: _id!,
+  //       columnId: columns[columnIndex]._id,
+  //       title: title,
+  //       color: color,
+  //       position: columns[columnIndex].position,
+  //     })
+  // }
+
   return (
     <>
       {columns ? (
@@ -229,6 +271,9 @@ export const Board = ({
                             isDragging={snapshot.isDragging}
                             newColumn={index === columns.length - 1 ? newColumn : false}
                             setNewColumn={setNewColumn}
+                            _isEditingColumn={_isEditingColumn}
+                            _isEditingItem={_isEditingItem}
+                            editList={editList}
                           />
                           {provided.placeholder}
                         </div>

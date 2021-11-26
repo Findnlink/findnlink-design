@@ -26,6 +26,7 @@ export default {
 // export const add = () => <Add text="Add new" color="var(--text200)" />
 export const board = () => {
   const [data, setData] = useState(_data[0])
+  const [editList, setEditList] = useState<string[]>([]);
 
   return (
     <Board
@@ -37,6 +38,7 @@ export const board = () => {
       createdAt={data.createdAt}
       updatedAt={data.updatedAt}
       i18n={{ addNew: 'Add new', remove: 'Remove', edit: 'Edit' }}
+      editList={editList}
     />
   )
 }

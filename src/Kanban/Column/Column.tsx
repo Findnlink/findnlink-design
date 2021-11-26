@@ -27,9 +27,11 @@ const Column = ({
   isDragging,
   newColumn,
   setNewColumn,
+  _isEditingColumn,
+  _isEditingItem,
+  editList,
 }: ColumnProps) => {
   const [newItem, setNewItem] = useState<boolean>(false)
-
   return (
     <div data-testid={'Column'} className={styles.column}>
       <Header
@@ -73,6 +75,9 @@ const Column = ({
                         i18n={i18n}
                         newItem={itemIndex === items.length - 1 ? newItem : false}
                         setNewItem={setNewItem}
+                        provided={provided}
+                        _isEditingItem={_isEditingItem}
+                        locked={editList!.indexOf(item._id as never) !== -1}
                       />
                       {provided.placeholder}
                     </div>

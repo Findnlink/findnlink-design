@@ -10,4 +10,5 @@ export interface BoardProps {
   updatedAt?: string
   i18n: { addNew: string; remove: string; edit: string }
   emitter?: any
+  editList: string[];
 }

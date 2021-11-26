@@ -21,11 +21,22 @@ const Item = ({
   i18n,
   newItem,
   setNewItem,
+  provided,
+  _isEditingItem,
+  locked
 }: ItemProps) => {
   const [open, setOpen] = useState(false)
   const [location, setLocation] = useState({ x: 0, y: 0 })
   const [value, setValue] = useState(text)
   const [editMode, setEditMode] = useState(newItem)
+
+  // useEffect(() => {
+  //   console.log("provided.draggableProps", provided.draggableProps)
+  // }, [provided])
+
+  useEffect(() => {
+   if(editMode) _isEditingItem!(columnIndex!, itemIndex!)
+  }, [editMode])
 
   useEffect(() => {
     setValue(text)
@@ -67,7 +78,7 @@ const Item = ({
         <div
           data-testid={'Item'}
           className={styles.item}
-          style={isDragging ? { border: '2px solid var(--text400)' } : {}}
+          style={isDragging ? { border: '2px solid var(--text400)' } : locked ? {border: '2px solid var(--error)'} : {}}
         >
           {/* {focus ? <input value={text}></input> : text} */}
           <span className={styles.textWrapper}>

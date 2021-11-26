@@ -15,4 +15,7 @@ export default interface ItemProps {
   i18n?: { addNew: string; remove: string; edit: string }
   newItem?: boolean
   setNewItem?: React.Dispatch<React.SetStateAction<boolean>>
+  provided?: any,
+  _isEditingItem?: (columnIndex: number, itemIndex: number) => void,
+  locked?: boolean
 }
