@@ -30,8 +30,10 @@ const Column = ({
   _isEditingColumn,
   _isEditingItem,
   editList,
+  locked
 }: ColumnProps) => {
   const [newItem, setNewItem] = useState<boolean>(false)
+
   return (
     <div data-testid={'Column'} className={styles.column}>
       <Header
@@ -46,6 +48,8 @@ const Column = ({
         i18n={i18n}
         newColumn={newColumn}
         setNewColumn={setNewColumn}
+        locked={locked}
+        _isEditingColumn={_isEditingColumn}
       />
       <Droppable droppableId={String(index)} key={_id} type="COLUMN">
         {(provided: any) => (

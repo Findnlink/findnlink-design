@@ -12,4 +12,6 @@ export interface HeaderProps {
   i18n?: { addNew: string; remove: string; edit: string }
   newColumn: boolean
   setNewColumn: React.Dispatch<React.SetStateAction<boolean>>
+  _isEditingColumn?: (columnIndex: number) => void,
+  locked?: boolean
 }

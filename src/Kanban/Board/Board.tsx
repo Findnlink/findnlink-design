@@ -5,9 +5,10 @@ import styles from './Board.module.scss'
 import Column from '../Column/Column'
 import ColumnType from '../Column/Column.types'
 import ColumnProps from '../Column/Column.types'
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import { DragDropContext, Draggable, DraggableProvidedDraggableProps, Droppable } from 'react-beautiful-dnd'
 import Add from '../Add/Add'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+
 
 export const Board = ({
   columns,
@@ -195,17 +196,7 @@ export const Board = ({
         color: color,
         position: columns[columnIndex].position,
       })
-  }
-
-  // const _isDraggingItem = (columnIndex: number, itemIndex: number) => {
-  //   if (emitter)
-  //     emitter.emit('IS_DRAGGING_ITEM', {
-  //       boardId: _id!,
-  //       columnId: columns[columnIndex]._id,
-  //       itemId: columns[columnIndex].items[itemIndex]._id,
-  //       position: columns[columnIndex].items[itemIndex].position,
-  //     })
-  // }
+}
 
   const _isEditingItem = (columnIndex: number, itemIndex: number) => {
     if (emitter)
@@ -218,25 +209,13 @@ export const Board = ({
   }
 
   const _isEditingColumn = (columnIndex: number) => {
-    // if (emitter)
-    //   emitter.emit('IS_EDITING_COLUMN', {
-    //     boardId: _id!,
-    //     columnId: columns[columnIndex]._id,
-    //     itemId: columns[columnIndex].items[itemIndex]._id,
-    //     position: columns[columnIndex].items[itemIndex].position,
-    //   })
+    if (emitter)
+      emitter.emit('IS_EDITING_COLUMN', {
+        boardId: _id!,
+        columnId: columns[columnIndex]._id,
+        position: columns[columnIndex].position,
+      })
   }
-
-  // const _isDraggingColumn = () => {
-  //   if (emitter)
-  //     emitter.emit('IS_DRAGGING_COLUMN', {
-  //       boardId: _id!,
-  //       columnId: columns[columnIndex]._id,
-  //       title: title,
-  //       color: color,
-  //       position: columns[columnIndex].position,
-  //     })
-  // }
 
   return (
     <>
@@ -274,6 +253,7 @@ export const Board = ({
                             _isEditingColumn={_isEditingColumn}
                             _isEditingItem={_isEditingItem}
                             editList={editList}
+                            locked={editList!.indexOf(col._id as never) !== -1}
                           />
                           {provided.placeholder}
                         </div>

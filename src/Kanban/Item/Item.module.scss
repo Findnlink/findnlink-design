@@ -12,6 +12,11 @@
   line-height: 1.2;
   min-height: 15px;
   box-shadow: var(--dropShadow);
+  transition: border 0.2s ease-in-out;
+
+  &.locked{
+    border: 2px solid var(--error);
+  }
 
   .icon {
     display: none;

@@ -17,11 +17,17 @@ const Header = ({
   i18n,
   newColumn,
   setNewColumn,
+  locked,
+  _isEditingColumn
 }: HeaderProps) => {
   const [open, setOpen] = useState(false)
   const [location, setLocation] = useState({ x: 0, y: 0 })
   const [value, setValue] = useState(text)
   const [editMode, setEditMode] = useState(newColumn)
+
+  useEffect(() => {
+    if(editMode || isDragging) _isEditingColumn!(columnIndex!)
+  }, [editMode, isDragging] )
 
   useEffect(() => {
     setValue(text)
@@ -79,12 +85,11 @@ const Header = ({
       <div
         {...dragHandleProps}
         data-testid={'Header'}
-        className={styles.header}
+        className={locked ? styles.header + " " + styles.locked : styles.header}
         style={isDragging ? { border: '2px solid var(--text400)', color } : { color }}
       >
         <div className={styles.textWrapper}>
           <span className={styles.itemCount}>{itemCount}</span>
-
           {editMode ? (
             <input
               className={styles.input}

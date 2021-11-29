@@ -24,4 +24,5 @@ export default interface ColumnProps {
   _isEditingColumn?: (columnIndex: number) => void,
   _isEditingItem?: (columnIndex: number, itemIndex: number) => void,
   editList?: string[],
+  locked?:boolean
 }
