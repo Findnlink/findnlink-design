@@ -10,10 +10,18 @@ export const ContextMenu = ({
   setOpen,
   location,
   setLocation,
+  isDisabled,
 }: ContextMenuProps) => {
   const menuRef = useRef(null)
 
+  //Close Context Menu
+  useEffect(() => {
+    if (isDisabled) setOpen(false)
+  }, [isDisabled])
+
   const handleClick = (e: any) => {
+    if (isDisabled) return
+
     setOpen(true)
     setLocation({ x: e.pageX, y: e.pageY })
   }

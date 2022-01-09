@@ -5,10 +5,14 @@ import styles from './Board.module.scss'
 import Column from '../Column/Column'
 import ColumnType from '../Column/Column.types'
 import ColumnProps from '../Column/Column.types'
-import { DragDropContext, Draggable, DraggableProvidedDraggableProps, Droppable } from 'react-beautiful-dnd'
+import {
+  DragDropContext,
+  Draggable,
+  DraggableProvidedDraggableProps,
+  Droppable,
+} from 'react-beautiful-dnd'
 import Add from '../Add/Add'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-
 
 export const Board = ({
   columns,
@@ -42,7 +46,7 @@ export const Board = ({
       // reordering columns
       let ordered: any[] = reorder(columns, source.index, destination.index)
       ordered = setPosition(ordered)
-      console.log('ordered', ordered)
+      //console.log('ordered', ordered)
       setColumns((prev: any) => ({ ...prev, columns: ordered }))
 
       if (emitter)
@@ -69,7 +73,7 @@ export const Board = ({
   }
 
   const reorderColumns = (columns: ColumnProps[], source: any, destination: any): ColumnType[] => {
-    console.log('startIndex ', source, 'EndIndex ', destination)
+    //console.log('startIndex ', source, 'EndIndex ', destination)
 
     const current = [...columns[source.droppableId].items]
     const next = [...columns[destination.droppableId].items]
@@ -108,7 +112,7 @@ export const Board = ({
       item.position = index
       return item
     })
-    console.log('setPosition', withPosition)
+    //console.log('setPosition', withPosition)
     return withPosition
   }
 
@@ -196,24 +200,26 @@ export const Board = ({
         color: color,
         position: columns[columnIndex].position,
       })
-}
+  }
 
-  const _isEditingItem = (columnIndex: number, itemIndex: number) => {
+  const _isEditingItem = (columnIndex: number, itemIndex: number, isEditing: boolean) => {
     if (emitter)
       emitter.emit('IS_EDITING_ITEM', {
         boardId: _id!,
         columnId: columns[columnIndex]._id,
         itemId: columns[columnIndex].items[itemIndex]._id,
         position: columns[columnIndex].items[itemIndex].position,
+        isEditing: isEditing,
       })
   }
 
-  const _isEditingColumn = (columnIndex: number) => {
+  const _isEditingColumn = (columnIndex: number, isEditing: boolean) => {
     if (emitter)
       emitter.emit('IS_EDITING_COLUMN', {
         boardId: _id!,
         columnId: columns[columnIndex]._id,
         position: columns[columnIndex].position,
+        isEditing: isEditing,
       })
   }
 
@@ -228,7 +234,12 @@ export const Board = ({
                 {columns
                   .sort((columnA, columnB) => columnA.position - columnB.position)
                   .map((col: ColumnProps, index: number) => (
-                    <Draggable draggableId={String(index)} key={index} index={index}>
+                    <Draggable
+                      draggableId={String(index)}
+                      key={index}
+                      index={index}
+                      isDragDisabled={editList!.indexOf(col._id as never) !== -1}
+                    >
                       {(provided: any, snapshot: any) => (
                         <div ref={provided.innerRef} {...provided.draggableProps}>
                           <Column

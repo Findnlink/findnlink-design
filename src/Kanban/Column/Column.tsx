@@ -30,7 +30,7 @@ const Column = ({
   _isEditingColumn,
   _isEditingItem,
   editList,
-  locked
+  locked,
 }: ColumnProps) => {
   const [newItem, setNewItem] = useState<boolean>(false)
 
@@ -57,7 +57,12 @@ const Column = ({
             {items
               .sort((itemA, itemB) => itemA.position - itemB.position)
               .map((item: ItemProps, itemIndex: number) => (
-                <Draggable draggableId={item._id} key={item._id} index={itemIndex}>
+                <Draggable
+                  draggableId={item._id}
+                  key={item._id}
+                  index={itemIndex}
+                  isDragDisabled={editList!.indexOf(item._id as never) !== -1}
+                >
                   {(provided: any, snapshot: any) => (
                     <div
                       ref={provided.innerRef}
@@ -88,8 +93,8 @@ const Column = ({
                   )}
                 </Draggable>
               ))}
-              <div style={{height: "1px"}} />
-              {provided.placeholder}
+            <div style={{ height: '1px' }} />
+            {provided.placeholder}
           </div>
         )}
       </Droppable>

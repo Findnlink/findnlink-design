@@ -7,7 +7,7 @@ import { Icon } from '../../Icon/Icon'
 const Add = ({ text, onClick, isColumn }: AddProps) => {
   return (
     <span
-      data-testid={'Add'}
+      data-testid={'add'}
       className={isColumn ? styles.add + ' ' + styles.column : styles.add}
       onClick={onClick}
     >

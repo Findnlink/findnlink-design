@@ -7,4 +7,5 @@ export interface ContextMenuProps {
   setOpen: any
   location: { x: number; y: number }
   setLocation: any
+  isDisabled?: boolean
 }

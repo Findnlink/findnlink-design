@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ItemProps from './Item.types'
 //@ts-ignore
 import styles from './Item.module.scss'
-import 'react-loading-skeleton/dist/skeleton.css'
+//import 'react-loading-skeleton/dist/skeleton.css'
 import { Icon } from '../../Icon'
 import { ContextMenu } from '../../ContextMenu/ContextMenu'
 
@@ -31,8 +31,8 @@ const Item = ({
   const [editMode, setEditMode] = useState(newItem)
 
   useEffect(() => {
-    if(editMode || isDragging) _isEditingItem!(columnIndex!, itemIndex!)
-  }, [editMode, isDragging] )
+    _isEditingItem!(columnIndex!, itemIndex!, editMode || isDragging!)
+  }, [editMode, isDragging])
 
   useEffect(() => {
     setValue(text)
@@ -70,10 +70,11 @@ const Item = ({
         setOpen={setOpen}
         location={location}
         setLocation={setLocation}
+        isDisabled={locked}
       >
         <div
           data-testid={'Item'}
-          className={locked ? styles.item + " " + styles.locked : styles.item}
+          className={locked ? styles.item + ' ' + styles.locked : styles.item}
           style={isDragging ? { border: '2px solid var(--text400)' } : {}}
         >
           <span className={styles.textWrapper}>
@@ -99,19 +100,25 @@ const Item = ({
                 }
               />
             ) : (
-              <span>{value}</span>
+              <span className={styles.text}>{value}</span>
             )}
           </span>
 
-          <div
-            className={styles.icon}
-            onClick={(e) => {
-              setLocation({ x: e.pageX, y: e.pageY })
-              setOpen(true)
-            }}
-          >
-            <Icon icon="itemMenu" />
-          </div>
+          {locked ? (
+            <div className={styles.icon + ' ' + styles.lock}>
+              <Icon icon={'lock'} />
+            </div>
+          ) : (
+            <div
+              className={styles.icon}
+              onClick={(e) => {
+                setLocation({ x: e.pageX, y: e.pageY })
+                setOpen(true)
+              }}
+            >
+              <Icon icon="itemMenu" />
+            </div>
+          )}
         </div>
       </ContextMenu>
 

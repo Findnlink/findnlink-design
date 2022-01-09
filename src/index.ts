@@ -2,5 +2,7 @@ import { Button } from './Button'
 import { Input } from './Input'
 import { Icon } from './Icon'
 import { Board } from './Kanban/Board'
+import { ContextMenu } from './ContextMenu'
+import { Modal } from './Modal'
 
-export { Button, Input, Board, Icon }
+export { Button, Input, Board, Icon, ContextMenu, Modal }

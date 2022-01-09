@@ -4,7 +4,7 @@ import { Board } from './Board/Board'
 import Card from './Column/Column'
 import Header from './Header/Header'
 import Item from './Item/Item'
-import _data from '../../data.json'
+import _data from './data.json'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 export default {
@@ -26,7 +26,7 @@ export default {
 // export const add = () => <Add text="Add new" color="var(--text200)" />
 export const board = () => {
   const [data, setData] = useState(_data[0])
-  const [editList, setEditList] = useState<string[]>([]);
+  const [editList, setEditList] = useState<string[]>([])
 
   return (
     <Board

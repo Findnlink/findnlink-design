@@ -1,16 +1,23 @@
 module.exports = {
-  roots: ["src"],
-  setupFilesAfterEnv: ["./jest.setup.ts"],
-  moduleFileExtensions: ["ts", "tsx", "js"],
-  testPathIgnorePatterns: ["node_modules/"],
+  roots: ['<rootDir>/src'],
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
+  testMatch: [
+    '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
+    '<rootDir>/src/**/*.{spec,test}.{js,jsx,ts,tsx}',
+  ],
+  testEnvironment: 'jsdom',
   transform: {
-    "^.+\\.tsx?$": "ts-jest"
+    '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.scss$': 'jest-scss-transform',
   },
-  testMatch: ["**/*.test.(ts|tsx)"],
+  transformIgnorePatterns: [
+    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
+    //'^.+\\.module\\.(css|sass|scss)$',
+  ],
   moduleNameMapper: {
-    // Mocks out all these file formats when tests are run.
-    "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-      "identity-obj-proxy",
-    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
-  }
-};
+    '/^.+.module.(css|sass|scss)$/': 'identity-obj-proxy',
+  },
+  resolver: undefined,
+  resetMocks: true,
+}

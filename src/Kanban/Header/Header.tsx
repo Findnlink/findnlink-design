@@ -18,7 +18,7 @@ const Header = ({
   newColumn,
   setNewColumn,
   locked,
-  _isEditingColumn
+  _isEditingColumn,
 }: HeaderProps) => {
   const [open, setOpen] = useState(false)
   const [location, setLocation] = useState({ x: 0, y: 0 })
@@ -26,8 +26,8 @@ const Header = ({
   const [editMode, setEditMode] = useState(newColumn)
 
   useEffect(() => {
-    if(editMode || isDragging) _isEditingColumn!(columnIndex!)
-  }, [editMode, isDragging] )
+    _isEditingColumn!(columnIndex!, editMode || isDragging!)
+  }, [editMode, isDragging])
 
   useEffect(() => {
     setValue(text)
@@ -81,11 +81,12 @@ const Header = ({
       setOpen={setOpen}
       location={location}
       setLocation={setLocation}
+      isDisabled={locked}
     >
       <div
         {...dragHandleProps}
         data-testid={'Header'}
-        className={locked ? styles.header + " " + styles.locked : styles.header}
+        className={locked ? styles.header + ' ' + styles.locked : styles.header}
         style={isDragging ? { border: '2px solid var(--text400)', color } : { color }}
       >
         <div className={styles.textWrapper}>
@@ -110,15 +111,22 @@ const Header = ({
             <span>{text}</span>
           )}
         </div>
-        <div
-          className={styles.icon}
-          onClick={(e) => {
-            setLocation({ x: e.pageX, y: e.pageY })
-            setOpen(true)
-          }}
-        >
-          <Icon icon="itemMenu" />
-        </div>
+
+        {locked ? (
+          <div className={styles.icon + ' ' + styles.lock}>
+            <Icon icon={'lock'} />
+          </div>
+        ) : (
+          <div
+            className={styles.icon}
+            onClick={(e) => {
+              setLocation({ x: e.pageX, y: e.pageY })
+              setOpen(true)
+            }}
+          >
+            <Icon icon="itemMenu" />
+          </div>
+        )}
       </div>
     </ContextMenu>
   )

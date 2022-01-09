@@ -176,6 +176,23 @@ export const Icon = ({ icon, color }: IconProps) => {
           </svg>
         )
 
+      case 'lock':
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="11.92"
+            height="13.623"
+            viewBox="0 0 11.92 13.623"
+          >
+            <path
+              id="Icon_awesome-lock"
+              data-name="Icon awesome-lock"
+              d="M10.643,5.96H10V4.044a4.044,4.044,0,1,0-8.089,0V5.96H1.277A1.277,1.277,0,0,0,0,7.237v5.109a1.277,1.277,0,0,0,1.277,1.277h9.366a1.277,1.277,0,0,0,1.277-1.277V7.237A1.277,1.277,0,0,0,10.643,5.96Zm-2.767,0H4.044V4.044a1.916,1.916,0,0,1,3.831,0Z"
+              fill="var(--text300)"
+            />
+          </svg>
+        )
+
       default:
         return <svg></svg>
     }

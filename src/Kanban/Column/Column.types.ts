@@ -21,8 +21,8 @@ export default interface ColumnProps {
   newColumn: boolean
   setNewColumn: React.Dispatch<React.SetStateAction<boolean>>
   provided?: any,
-  _isEditingColumn?: (columnIndex: number) => void,
-  _isEditingItem?: (columnIndex: number, itemIndex: number) => void,
+  _isEditingColumn?: (columnIndex: number, isEditing: boolean) => void,
+  _isEditingItem?: (columnIndex: number, itemIndex: number, isEditing: boolean) => void,
   editList?: string[],
   locked?:boolean
 }

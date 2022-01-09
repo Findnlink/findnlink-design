@@ -1,4 +1,5 @@
 .item {
+  position: relative;
   font-size: var(--fontM);
   color: var(--text200);
   background-color: var(--bg200);
@@ -12,10 +13,13 @@
   line-height: 1.2;
   min-height: 15px;
   box-shadow: var(--dropShadow);
-  transition: border 0.2s ease-in-out;
+  //transition: border 0.2s ease-in-out;
 
-  &.locked{
-    border: 2px solid var(--error);
+  &.locked {
+    border: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+    animation: borderAnimation 1s alternate infinite;
+    cursor: not-allowed;
   }
 
   .icon {
@@ -26,6 +30,10 @@
     border-radius: calc(var(--borderRadius) / 2);
     transition: all 0.1s ease-in-out;
     align-self: center;
+
+    &.lock {
+      display: flex;
+    }
 
     &:hover {
       background-color: var(--bg300);
@@ -52,6 +60,7 @@
 
     .text {
       overflow-wrap: break-word;
+      white-space: pre-wrap;
     }
   }
 
@@ -64,6 +73,12 @@
       justify-content: center;
       height: 15px;
     }
+  }
+}
+
+@keyframes borderAnimation {
+  100% {
+    border: 2px solid var(--text400);
   }
 }
 

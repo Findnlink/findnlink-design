@@ -15,7 +15,7 @@ const meta: Meta = {
 
 export default meta
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />
+const Template: Story<ButtonProps> = (args) => <Button {...args}>Default</Button>
 
 Template.parameters = {
   jest: ['Button.test.tsx'],
