@@ -58,7 +58,7 @@ describe('Board Component', () => {
       i18n: { addNew: 'Add new', remove: 'Remove', edit: 'Edit' },
       editList: [],
     })
-    console.log(getByTestId('add'), getByTestId('Column'), 'yee')
+    //console.log(getByTestId('add'), getByTestId('Column'), 'yee')
   })
 
   // it('should add a new item inside column', () => {
