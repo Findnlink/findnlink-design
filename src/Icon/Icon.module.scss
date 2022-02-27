@@ -1,4 +1,21 @@
+.icon {
+}
 
-.foo {
-  color: blue;
+.fontS {
+  width: var(--fontS) !important;
+  height: var(--fontS) !important;
+}
+
+.fontM {
+  width: var(--fontM) !important;
+  height: var(--fontM) !important;
+}
+
+.fontL {
+  width: var(--fontL) !important;
+  height: var(--fontL) !important;
+}
+.fontXL {
+  width: var(--fontXL) !important;
+  height: var(--fontXL) !important;
 }

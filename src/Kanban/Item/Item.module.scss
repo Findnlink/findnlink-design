@@ -5,7 +5,7 @@
   background-color: var(--bg200);
   width: calc(100% - 2 * 10px - 2 * 2px); //100% - padding and border
   padding: 10px;
-  border-radius: calc(var(--borderRadius) / 2);
+  border-radius: var(--borderRadius);
   border: 2px solid transparent;
   margin: 4px 0px;
   display: flex;
@@ -27,7 +27,7 @@
     padding: 5px 10px;
     margin: -5px;
     cursor: pointer;
-    border-radius: calc(var(--borderRadius) / 2);
+    border-radius: var(--borderRadius);
     transition: all 0.1s ease-in-out;
     align-self: center;
 

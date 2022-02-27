@@ -1,9 +1,16 @@
 import React from 'react'
 import { IconProps } from './Icon.types'
 //@ts-ignore
-import styles from './Icon.module.scss'
+import scss from './Icon.module.scss'
+import { _getClassNames } from '../../util/getClassNames'
 
-export const Icon = ({ icon, color }: IconProps) => {
+export const Icon = ({ icon, color, size }: IconProps) => {
+  const getClassNames = () => {
+    let className = _getClassNames(scss.icon, scss, size, undefined, undefined)
+
+    return className.join(' ')
+  }
+
   const returnSVG = () => {
     switch (icon) {
       case 'add':
@@ -183,12 +190,50 @@ export const Icon = ({ icon, color }: IconProps) => {
             width="11.92"
             height="13.623"
             viewBox="0 0 11.92 13.623"
+            className={getClassNames()}
           >
             <path
               id="Icon_awesome-lock"
               data-name="Icon awesome-lock"
               d="M10.643,5.96H10V4.044a4.044,4.044,0,1,0-8.089,0V5.96H1.277A1.277,1.277,0,0,0,0,7.237v5.109a1.277,1.277,0,0,0,1.277,1.277h9.366a1.277,1.277,0,0,0,1.277-1.277V7.237A1.277,1.277,0,0,0,10.643,5.96Zm-2.767,0H4.044V4.044a1.916,1.916,0,0,1,3.831,0Z"
               fill="var(--text300)"
+            />
+          </svg>
+        )
+      case 'eye':
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="11.927"
+            viewBox="0 0 18 11.927"
+            className={getClassNames()}
+          >
+            <path
+              id="Path_1084"
+              data-name="Path 1084"
+              d="M17.892,69.51A10.029,10.029,0,0,0,9,64,10.031,10.031,0,0,0,.109,69.51a1,1,0,0,0,0,.907A10.029,10.029,0,0,0,9,75.927a10.031,10.031,0,0,0,8.891-5.51,1,1,0,0,0,0-.907ZM9,74.436a4.473,4.473,0,1,1,4.5-4.473A4.486,4.486,0,0,1,9,74.436Zm0-7.454a3,3,0,0,0-.791.118,1.479,1.479,0,0,1-.147,1.932,1.5,1.5,0,0,1-1.944.146,2.966,2.966,0,0,0,1.221,3.25,3.008,3.008,0,0,0,3.489-.11A2.972,2.972,0,0,0,9,66.982Z"
+              transform="translate(-0.001 -64)"
+              fill="#a7a8a8"
+            />
+          </svg>
+        )
+
+      case 'eyeClosed':
+        return (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20.033"
+            height="16.027"
+            viewBox="0 0 20.033 16.027"
+            className={getClassNames()}
+          >
+            <path
+              id="Path_1085"
+              data-name="Path 1085"
+              d="M10.018,12.517A4.491,4.491,0,0,1,5.545,8.351L2.261,5.813a10.433,10.433,0,0,0-1.149,1.74,1.013,1.013,0,0,0,0,.914,10.04,10.04,0,0,0,8.906,5.553,9.723,9.723,0,0,0,2.438-.327l-1.624-1.257A4.512,4.512,0,0,1,10.018,12.517Zm9.823,1.819-3.46-2.674a10.369,10.369,0,0,0,2.543-3.195,1.013,1.013,0,0,0,0-.914A10.04,10.04,0,0,0,10.018,2,9.646,9.646,0,0,0,5.407,3.18L1.424.1a.5.5,0,0,0-.7.088L.107.981a.5.5,0,0,0,.088.7L18.612,15.918a.5.5,0,0,0,.7-.088l.615-.791A.5.5,0,0,0,19.841,14.336ZM14.09,9.891,12.86,8.94A2.966,2.966,0,0,0,9.226,5.124a1.492,1.492,0,0,1,.291.883,1.46,1.46,0,0,1-.048.313l-2.3-1.781A4.455,4.455,0,0,1,10.018,3.5,4.5,4.5,0,0,1,14.525,8.01a4.4,4.4,0,0,1-.435,1.882Z"
+              transform="translate(-0.001 0.003)"
+              fill="#a7a8a8"
             />
           </svg>
         )

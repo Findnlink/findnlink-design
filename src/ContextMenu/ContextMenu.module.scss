@@ -2,7 +2,7 @@
   position: absolute;
   z-index: 10000;
   background-color: var(--bg300);
-  border-radius: calc(var(--borderRadius) / 2);
+  border-radius: var(--borderRadius);
   border: var(--border) var(--text400);
   box-shadow: var(--dropShadow);
 
@@ -17,7 +17,7 @@
       padding: 5px 10px;
       width: 100%;
       text-align: left;
-      border-radius: calc(var(--borderRadius) / 2);
+      border-radius: var(--borderRadius);
       font-size: var(--fontM);
       transition: all 0.1s ease-in-out;
       display: flex;
@@ -49,7 +49,7 @@
         padding: 12px;
         margin: 1px 3px;
         cursor: pointer;
-        border-radius: calc(var(--borderRadius) / 2);
+        border-radius: var(--borderRadius);
         opacity: 0.7;
 
         &:hover {

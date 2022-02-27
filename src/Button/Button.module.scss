@@ -1,33 +1,45 @@
+@use '../../util/util.scss';
+
 .button {
-  transition: all 0.2s ease-in-out;
+  transition: var(--transition);
   color: var(--text200);
   background-color: var(--bg200);
   font-size: var(--fontM);
   border-radius: var(--borderRadius);
-  padding: 5px 12px;
+  padding: 4px 12px;
   box-shadow: var(--dropShadow);
   cursor: pointer;
   border: var(--border) var(--text400);
-  font-weight: var(--weightNormal);
+  font-weight: var(--weightMedium);
+
+  &:enabled {
+    &:hover {
+      background-color: var(--bg300);
+      scale: 1.05;
+    }
+
+    &:active {
+      transition: none;
+      box-shadow: var(--innerShadow);
+      scale: 1;
+    }
+  }
 
   &.primary {
-    color: var(--primary);
-    background-color: var(--primary20);
+    color: var(--text100);
     border-color: var(--primary);
+    //font-weight: var(--weightBold);
+    background-color: var(--primary20);
+    &:enabled {
+      &:hover {
+        background-color: var(--primary70);
+        border-color: var(--primary);
+      }
+    }
   }
 
-  &:hover {
-    background-color: var(--bg300);
-    border: var(--border) var(--text400);
-  }
-
-  &:active {
-    transition: all 0s ease-in-out;
-    box-shadow: var(--innerShadow);
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
+  // &:disabled {
+  //   opacity: 0.5;
+  //   cursor: not-allowed;
+  // }
 }

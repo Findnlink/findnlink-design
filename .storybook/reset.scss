@@ -68,7 +68,8 @@ mark,
 audio,
 video,
 button,
-input {
+input,
+textarea {
   margin: 0;
   padding: 0;
   border: 0;
@@ -164,9 +165,4 @@ hr {
 input,
 select {
   vertical-align: middle;
-}
-
-.KanbanSkeleton {
-  display: flex;
-  flex-direction: row;
 }

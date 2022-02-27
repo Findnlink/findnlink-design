@@ -2,11 +2,11 @@ module.exports = (componentName) => ({
   content: `import React from "react";
 import { ${componentName}Props } from "./${componentName}.types";
 //@ts-ignore
-import styles from "./${componentName}.module.scss";
+import scss from "./${componentName}.module.scss";
 
 export const ${componentName} = ({ foo }: ${componentName}Props) => {
   return (
-    <div data-testid={'${componentName}'} className={styles.foo}>
+    <div data-testid={'${componentName}'} className={scss.foo}>
       {foo}
     </div>
   )
