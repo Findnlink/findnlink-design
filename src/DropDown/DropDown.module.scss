@@ -1,0 +1,45 @@
+.dropDown {
+  transition: var(--transition);
+  color: var(--text200);
+  background-color: var(--bg200);
+  font-size: var(--fontM);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--dropShadow);
+  cursor: pointer;
+  border: var(--border) var(--text400);
+  font-weight: var(--weightMedium);
+  width: fit-content;
+
+  ul {
+    max-height: 200px;
+    overflow-y: auto;
+    li {
+      padding: 10px;
+      list-style: none;
+      &:hover {
+        background-color: var(--bg300);
+      }
+
+      &.selected {
+        color: var(--text100);
+        border-color: var(--primary);
+        background-color: var(--primary70);
+      }
+    }
+
+    &.open {
+    }
+
+    &.close {
+      display: none;
+    }
+  }
+
+  .header {
+    padding: 10px;
+    border: var(--border) var(--text400);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+  }
+}

@@ -2,5 +2,7 @@ export interface ModalProps {
   children: any
   open: boolean
   onClose: () => void
-  selector: string
+  type?: string
+  onConfirm?: () => void
+  i18n?: { yes: string; no: string }
 }
