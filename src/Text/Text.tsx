@@ -8,7 +8,7 @@ export const Text = ({ children, scale, weight }: TextProps) => {
   const getClassNames = () => {
     let className = _getClassNames(scss.text, scss, scale, weight, undefined)
 
-    console.log(className, scale, weight)
+    //console.log(className, scale, weight)
 
     return className.join(' ')
   }

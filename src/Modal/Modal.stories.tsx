@@ -45,7 +45,7 @@ export const Confirm = () => {
         }}
         type="confirm"
         onConfirm={() => {
-          console.log('Confirm')
+          //console.log('Confirm')
         }}
         //selector="#modal-root"
       >

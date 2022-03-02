@@ -28,7 +28,7 @@ export const Input = ({
       className.push(scss.icon)
     }
 
-    console.log('weight', weight, className)
+    //console.log('weight', weight, className)
 
     return className.join(' ')
   }

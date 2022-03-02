@@ -8,26 +8,37 @@
   cursor: pointer;
   border: var(--border) var(--text400);
   font-weight: var(--weightMedium);
-  width: fit-content;
+  width: 200px;
 
   ul {
     max-height: 200px;
     overflow-y: auto;
+    overflow-x: hidden;
+
     li {
       padding: 10px;
       list-style: none;
+      background-color: var(--bg200);
+      width: 180px;
+      border: var(--border) transparent;
+
+      &:last-child {
+        border-radius: 0px 0px var(--borderRadius) var(--borderRadius);
+      }
+
       &:hover {
         background-color: var(--bg300);
       }
 
       &.selected {
         color: var(--text100);
-        border-color: var(--primary);
-        background-color: var(--primary70);
+        border: var(--border) var(--text400);
       }
     }
 
     &.open {
+      position: absolute;
+      transform: translate(-2px, 0);
     }
 
     &.close {
@@ -37,9 +48,5 @@
 
   .header {
     padding: 10px;
-    border: var(--border) var(--text400);
-    border-left: none;
-    border-right: none;
-    border-top: none;
   }
 }

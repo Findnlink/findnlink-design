@@ -3,7 +3,7 @@ import { DropDownProps, DropDownItemProps } from './DropDown.types'
 //@ts-ignore
 import scss from './DropDown.module.scss'
 
-export const DropDown = ({ items, selected, setSelected }: DropDownProps) => {
+export const DropDown = ({ items, selected, setSelected, placeholder }: DropDownProps) => {
   const Item = ({ children, disabled, index }: DropDownItemProps) => {
     return (
       <li
@@ -26,7 +26,9 @@ export const DropDown = ({ items, selected, setSelected }: DropDownProps) => {
         setOpen((prev) => !prev)
       }}
     >
-      <div className={scss.header}>{selected !== null ? items[selected].children : 'Select'}</div>
+      <div className={scss.header}>
+        {selected !== null ? items[selected].children : placeholder}
+      </div>
       <ul
         className={open ? scss.open + ' ' + scss.itemWrapper : scss.close + ' ' + scss.itemWrapper}
       >

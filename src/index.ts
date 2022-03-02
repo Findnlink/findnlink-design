@@ -11,6 +11,7 @@ import { Spacer } from './Spacer'
 import { Text } from './Text'
 import { TextArea } from './TextArea'
 import { DropDown } from './DropDown'
+import { Tag } from './Tag'
 
 export {
   Button,
@@ -26,4 +27,5 @@ export {
   Text,
   TextArea,
   DropDown,
+  Tag,
 }

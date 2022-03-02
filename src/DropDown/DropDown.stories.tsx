@@ -12,6 +12,7 @@ export const WithBar = () => {
       selected={selected}
       setSelected={setSelected}
       items={[{ children: 'Item1' }, { children: 'Item2' }, { children: 'Item3' }]}
+      placeholder="select"
     />
   )
 }
